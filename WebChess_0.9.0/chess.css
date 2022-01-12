@@ -1,0 +1,37 @@
+A:visited, :link {text-decoration: underline}
+A:link {color : navy}
+A:link:hover, :visited:hover {text-decoration: none}
+A:visited {color: navy}
+A:link:active, :visited:active {color: green}
+
+BODY {background-color: white ; color: black; font-family: Times, Times 
+New Roman, Serif}
+
+/*TABLE {border-collapse : collapse; border: 0px solid silver}*/
+/*TABLE {border-collapse : collapse; border: 0px dashed silver}*/
+/*TD {margin: 3px; padding: 0px; border: 0px silver}*/
+/*TH {margin: 3px; padding: 0px; border: 0px silver; background-color: lightgray}*/
+
+.move_header  {background-color: beige}
+.header_enabled  {background-color: beige}
+.header_disabled {background-color: #DDDDDD}
+.light_disabled {background-color: #444444}
+.dark_disabled {background-color: #BBBBBB}
+.light_enabled {background-color: #772222}
+.dark_enabled {background-color: #CCBBBB}
+
+H1 {color : navy; text-align: center}
+H2 {color : navy; text-align: center}
+H3 {font-family: Arial; font-weight: bold; text-align: left; text-indent: 
+80}
+
+HR {width: 50%}
+.fullwidth {width: 100%}
+
+.imgtitle {background-color: #800080; color: yellow}
+.shortdescription {text-size: smaller; font-family: Arial; font-style: 
+italic}
+.parenthesis {font-size: 10px}
+.goback {font-size: smaller}
+
+

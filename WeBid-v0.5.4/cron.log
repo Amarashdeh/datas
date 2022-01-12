@@ -1,0 +1,1154 @@
+=============== STARTING CRON SCRIPT: July 18, 2008 22:52:40
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718225240'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618225240'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 22:52:40
+=============== STARTING CRON SCRIPT: July 18, 2008 22:53:13
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718225313'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618225313'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 22:53:13
+=============== STARTING CRON SCRIPT: July 18, 2008 22:58:04
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718225804'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618225804'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 22:58:04
+=============== STARTING CRON SCRIPT: July 18, 2008 22:58:14
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718225814'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618225814'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 22:58:14
+=============== STARTING CRON SCRIPT: July 18, 2008 23:03:10
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718230310'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618230310'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:03:10
+=============== STARTING CRON SCRIPT: July 18, 2008 23:03:14
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718230314'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618230314'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:03:14
+=============== STARTING CRON SCRIPT: July 18, 2008 23:03:19
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718230319'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618230319'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:03:19
+=============== STARTING CRON SCRIPT: July 18, 2008 23:03:20
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718230320'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618230320'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:03:20
+=============== STARTING CRON SCRIPT: July 18, 2008 23:03:24
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718230324'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618230324'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:03:24
+=============== STARTING CRON SCRIPT: July 18, 2008 23:03:29
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718230329'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618230329'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:03:29
+=============== STARTING CRON SCRIPT: July 18, 2008 23:03:31
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718230331'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618230331'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:03:31
+=============== STARTING CRON SCRIPT: July 18, 2008 23:22:39
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080718232240'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080618232240'
+0 auctions to archive
+=========================== ENDING CRON: July 18, 2008 23:22:40
+=============== STARTING CRON SCRIPT: July 19, 2008 00:07:28
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719000728'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619000728'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:07:28
+=============== STARTING CRON SCRIPT: July 19, 2008 00:10:45
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719001045'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619001045'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:10:45
+=============== STARTING CRON SCRIPT: July 19, 2008 00:26:17
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719002617'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619002617'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:26:17
+=============== STARTING CRON SCRIPT: July 19, 2008 00:28:13
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719002813'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619002813'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:28:13
+=============== STARTING CRON SCRIPT: July 19, 2008 00:55:46
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719005546'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619005546'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:55:46
+=============== STARTING CRON SCRIPT: July 19, 2008 00:58:33
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719005833'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619005833'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:58:33
+=============== STARTING CRON SCRIPT: July 19, 2008 00:59:05
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719005905'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619005905'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:59:05
+=============== STARTING CRON SCRIPT: July 19, 2008 00:59:22
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719005922'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619005922'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:59:22
+=============== STARTING CRON SCRIPT: July 19, 2008 00:59:34
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719005934'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619005934'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:59:34
+=============== STARTING CRON SCRIPT: July 19, 2008 00:59:42
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719005942'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619005942'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 00:59:42
+=============== STARTING CRON SCRIPT: July 19, 2008 01:06:44
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719010644'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619010644'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 01:06:44
+=============== STARTING CRON SCRIPT: July 19, 2008 10:59:03
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719105903'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619105903'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 10:59:03
+=============== STARTING CRON SCRIPT: July 19, 2008 11:08:04
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719110804'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619110804'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 11:08:04
+=============== STARTING CRON SCRIPT: July 19, 2008 11:19:44
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080719111944'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080619111944'
+0 auctions to archive
+=========================== ENDING CRON: July 19, 2008 11:19:44
+=============== STARTING CRON SCRIPT: July 20, 2008 15:42:07
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720154207'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+1 auctions to close
+
+Processing auction: 22
+	UPDATE PHPAUCTIONXL_counters SET auctions=(auctions-1),
+		         closedauctions=(closedauctions+1)
+	SELECT * FROM PHPAUCTIONXL_users WHERE id='1'
+	SELECT * FROM PHPAUCTIONXL_bids WHERE auction='22' ORDER BY bid DESC
+	mail to seller: hopher10@googlemail.com
+=============== STARTING CRON SCRIPT: July 20, 2008 15:42:37
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720154237'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620154237'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 15:42:38
+=============== STARTING CRON SCRIPT: July 20, 2008 15:42:51
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720154251'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620154251'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 15:42:51
+=============== STARTING CRON SCRIPT: July 20, 2008 16:16:48
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720161648'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620161648'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:16:48
+=============== STARTING CRON SCRIPT: July 20, 2008 16:19:32
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720161932'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620161932'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:19:32
+=============== STARTING CRON SCRIPT: July 20, 2008 16:19:36
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720161936'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620161936'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:19:36
+=============== STARTING CRON SCRIPT: July 20, 2008 16:19:56
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720161956'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620161956'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:19:56
+=============== STARTING CRON SCRIPT: July 20, 2008 16:20:12
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162012'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162012'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:20:12
+=============== STARTING CRON SCRIPT: July 20, 2008 16:20:39
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162039'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162039'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:20:40
+=============== STARTING CRON SCRIPT: July 20, 2008 16:21:47
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162147'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162147'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:21:47
+=============== STARTING CRON SCRIPT: July 20, 2008 16:21:55
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162155'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162155'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:21:55
+=============== STARTING CRON SCRIPT: July 20, 2008 16:22:35
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162235'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162235'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:22:36
+=============== STARTING CRON SCRIPT: July 20, 2008 16:22:53
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162253'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162253'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:22:53
+=============== STARTING CRON SCRIPT: July 20, 2008 16:23:03
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162303'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162303'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:23:03
+=============== STARTING CRON SCRIPT: July 20, 2008 16:23:06
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162306'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162306'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:23:06
+=============== STARTING CRON SCRIPT: July 20, 2008 16:25:28
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162528'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162528'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:25:28
+=============== STARTING CRON SCRIPT: July 20, 2008 16:26:04
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162604'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162604'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:26:05
+=============== STARTING CRON SCRIPT: July 20, 2008 16:26:41
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162641'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162641'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:26:41
+=============== STARTING CRON SCRIPT: July 20, 2008 16:27:30
+++++++ Closing expired auctions
+SELECT * FROM PHPAUCTIONXL_auctions
+         WHERE ends <='20080720162730'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM PHPAUCTIONXL_auctions WHERE ends<='20080620162730'
+0 auctions to archive
+=========================== ENDING CRON: July 20, 2008 16:27:30
+=============== STARTING CRON SCRIPT: July 29, 2008 06:52:14
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729065214'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629065214'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 06:52:14
+=============== STARTING CRON SCRIPT: July 29, 2008 07:04:29
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070429'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070429'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:04:29
+=============== STARTING CRON SCRIPT: July 29, 2008 07:05:20
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070520'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070520'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:05:20
+=============== STARTING CRON SCRIPT: July 29, 2008 07:05:40
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070540'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070540'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:05:40
+=============== STARTING CRON SCRIPT: July 29, 2008 07:05:43
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070543'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070543'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:05:43
+=============== STARTING CRON SCRIPT: July 29, 2008 07:06:14
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070614'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070614'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:06:14
+=============== STARTING CRON SCRIPT: July 29, 2008 07:06:43
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070643'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070643'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:06:43
+=============== STARTING CRON SCRIPT: July 29, 2008 07:06:46
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070646'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070646'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:06:46
+=============== STARTING CRON SCRIPT: July 29, 2008 07:07:13
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070713'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070713'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:07:13
+=============== STARTING CRON SCRIPT: July 29, 2008 07:07:21
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070721'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070721'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:07:21
+=============== STARTING CRON SCRIPT: July 29, 2008 07:08:49
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070849'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070849'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:08:49
+=============== STARTING CRON SCRIPT: July 29, 2008 07:08:57
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729070857'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629070857'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:08:57
+=============== STARTING CRON SCRIPT: July 29, 2008 07:10:12
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729071012'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629071012'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:10:12
+=============== STARTING CRON SCRIPT: July 29, 2008 07:10:41
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729071041'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629071041'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:10:41
+=============== STARTING CRON SCRIPT: July 29, 2008 07:10:52
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729071052'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629071052'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:10:52
+=============== STARTING CRON SCRIPT: July 29, 2008 07:11:11
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729071111'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629071111'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:11:12
+=============== STARTING CRON SCRIPT: July 29, 2008 07:30:17
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729073017'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629073017'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:30:17
+=============== STARTING CRON SCRIPT: July 29, 2008 07:30:35
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729073035'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629073035'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:30:35
+=============== STARTING CRON SCRIPT: July 29, 2008 07:56:38
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080729075638'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080629075638'
+0 auctions to archive
+=========================== ENDING CRON: July 29, 2008 07:56:38
+=============== STARTING CRON SCRIPT: August 30, 2008 11:14:21
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830111421'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731111421'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 11:14:22
+=============== STARTING CRON SCRIPT: August 30, 2008 12:46:32
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830124632'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731124632'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 12:46:32
+=============== STARTING CRON SCRIPT: August 30, 2008 13:41:50
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830134150'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731134150'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 13:41:50
+=============== STARTING CRON SCRIPT: August 30, 2008 14:06:25
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830140625'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731140625'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 14:06:25
+=============== STARTING CRON SCRIPT: August 30, 2008 14:14:40
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830141440'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731141440'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 14:14:40
+=============== STARTING CRON SCRIPT: August 30, 2008 14:19:21
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830141921'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731141921'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 14:19:21
+=============== STARTING CRON SCRIPT: August 30, 2008 14:44:53
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830144453'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731144453'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 14:44:53
+=============== STARTING CRON SCRIPT: August 30, 2008 14:45:16
+++++++ Closing expired auctions
+SELECT * FROM webid_auctions
+         WHERE ends <='20080830144516'
+         AND ((closed='0')
+         OR (closed='1'
+         AND reserve_price > 0
+         AND num_bids > 0
+         AND current_bid < reserve_price
+         AND sold='s'))
+0 auctions to close
+
+++++++ Archiving old auctions
+SELECT * FROM webid_auctions WHERE ends<='20080731144516'
+0 auctions to archive
+=========================== ENDING CRON: August 30, 2008 14:45:16

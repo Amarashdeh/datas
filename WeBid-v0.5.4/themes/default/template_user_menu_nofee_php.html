@@ -1,0 +1,87 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function submitlogin ()
+{
+	document.user_login.submit ();
+}
+//-->
+</SCRIPT>
+
+<TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0  BORDER=0>
+  <TR>
+    <TD><BR>
+      <CENTER>
+        <B><?print $tlt_font.$MSG_205;?></B><p>        
+        <TABLE WIDTH="90%" CELLSPACING="0" CELLPADDING="1" BORDER="0" BGCOLOR="<?=$SETTINGS[bordercolor]?>">
+          <TR>
+            <TD><TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="4">
+                <TR>
+                  <TD COLSPAN="2"><?php print $nav_font; ?> <?php print $MSG_200."<B>$_SESSION[PHPAUCTION_LOGGED_IN_USERNAME]</B>"; ?> </TD>
+                </TR>
+                <?php
+				if(isset($_SESSION[TMP_MSG])) {
+				?>
+                <TR>
+                  <TD BGCOLOR="#FF9933" COLSPAN="2">
+				  	<?php
+					print "<B><FONT COLOR=white>$TMP_MSG</FONT></b></FONT>";
+					unset($_SESSION["TMP_MSG"]);
+					?>
+                  </TD>
+                </TR>
+                <?php
+				}
+				?>
+                <TR VALIGN="TOP">
+                  <TD  WIDTH="50%"><B>
+                    <?=$MSG_5140?>
+                    </B> <BR>
+                    <IMG SRC=images/arrow.gif><A HREF="edit_data.php"><?php print $MSG_621; ?></A><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="auction_watch.php"><?php print $MSG_471; ?></A><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="item_watch.php"><?php print $MSG_472; ?></A><BR>
+                    <IMG SRC=images/arrow.gif><A href="yourfeedback.php"><?php print $MSG_208 ?></A><BR>
+                    <IMG SRC=images/arrow.gif><A href="selltemplate.php"><?php print $MSG_25_0000 ?></A>
+                    <BR>
+                    <BR>
+                    <IMG SRC=images/arrow.gif><A HREF="logout.php"><?php print $MSG_245; ?></A> </TD>
+                  <TD  WIDTH="50%" VALIGN=TOP><B><?=$MSG_5139?></B><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="yourauctions.php"><?=$MSG_203?></A><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="yourauctions_c.php"><?=$MSG_204?></A><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="yourauctions_s.php"><?=$MGS_2__0056?></A><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="yourbids.php"><?php print $MSG_620; ?></A><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="selling.php"><?php print $MSG_453; ?></A><BR>
+                    <IMG SRC=images/arrow.gif><A HREF="buying.php"><?php print $MSG_454; ?></A><BR></TD>
+                </TR>
+              </TABLE></TD>
+          </TR>
+        </TABLE>
+        <p>
+        <?php
+        if (is_file("./modules/stores/store.php")) {
+        	if($STORESENABLED == 'y') {
+        		require('./modules/stores/includes/messagesst.inc.php');
+        		if($PHPAUCTION_HAS_STORE) {
+        			include "./modules/stores/templates/template_storepanel_php.html";
+        		} else {
+        			include "./modules/stores/templates/template_openstore_php.html";
+        		}
+        	}
+        }
+		?>        
+      </CENTER></TD>
+  </TR>
+</TABLE>

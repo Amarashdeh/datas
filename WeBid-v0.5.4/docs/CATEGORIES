@@ -1,0 +1,118 @@
+PhpAuction - web based auction systems
+
+=====================================
+
+     http://phpauction.org/
+
+=====================================
+
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+
+
+Phpauction comes with a default and general categories
+
+tree, but of course, you can personalize it as you need.
+
+
+
+You have two ways to do that:
+
+1. (SLOWER)
+
+	Access the admin control panel, under Auxiliary Tables and click on the Categories Tables link.
+
+	You may add/change/delete categories from this web-based management.
+
+	This is ok if you don't have to make many changes to the original structure.
+
+	
+
+2. (FASTER)
+
+To populate the categories tree from scratch, you must first edit categories.txt 
+you find in the "admin" directory following the instructions below.  
+ 
+
+	The structure of this file must be like the following:
+
+	- all categories at the top most level must be entered like
+
+	
+		1@Art & Antiques
+
+		1@Animals
+
+	- all second level categories must be entered like
+
+		2@Amateur Art
+
+	  below the corresponding "father" and before the next " father" or next 
+
+	  1@ category.
+
+	  The sample above would be:
+
+	  
+		1@Art & Antiques
+
+		2@Amateur Art
+
+		1@Animals
+
+
+	  This means Amateur Art is a subcategory of Art & Antiques.
+
+
+	- If a 2@ category has "children" they must be entered like:
+
+		3@Paintings
+
+		3@Sculpture
+
+
+	  Below the 2@ corresponding "father" and before other 2@ categories.
+
+	  The sample above would become:
+
+		1@Art & Antiques
+
+		2@Amateur Art
+
+		3@Paintings
+
+		3@Sculpture
+		1@Animals
+
+
+	Once you have created or edited your categories.txt file, place it in the admin directory.
+
+	The admin directory already contains a sample categories file corresponding
+
+	to the default categories tree: save it somewhere if you want.
+
+	Access the admin back-end, under Auxiliary Tables, click on Create 
+    New Categories Tree.  
+  
+ If you have edited the categories.txt click on the Start >> button and your new categories will be created.
+
+ 
+If you need technical support, use the Help Desk system located in your account page
+http://phpauction.org/login.php
+
+For more information you may go here to the FAQs located at the site
+http://phpauction.org/faqs.php
+
+Or use the manual located at
+
+http://phpauction.org/manuals.php

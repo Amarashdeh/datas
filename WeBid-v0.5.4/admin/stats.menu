@@ -1,0 +1,168 @@
+<?#//v.3.0.0
+#///////////////////////////////////////////////////////
+#//  COPYRIGHT 2004 Phpauction.org ALL RIGHTS RESERVED//
+#///////////////////////////////////////////////////////
+
+?>
+<TABLE WIDTH=100% CELLPADDING=2 CELLSPACING="0" BORDER="0">
+  <TR>
+    <TD WIDTH="3%" colspan=2>&nbsp;</TD>
+  </TR>
+  <FORM NAME=changefeetype ACTION=<?=basename($PHP_SELF)?> METHOD=post>
+    <?
+		if($SETTINGS[feetype] == "pay")
+		{
+			$SW = "'prepay'";
+		}
+		else
+		{
+			$SW = "'pay'";
+		}
+	?>
+  </FORM>
+  <TR> 
+    <TD WIDTH="3%" colspan=2>
+      <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#99CCFF">
+        <tr> 
+          <td> 
+            <table width=100% cellpadding=2 cellspacing="0" border="0">
+              <tr> 
+                <td bgcolor="#99CCFF"> <font face="Tahoma, Verdana" size="2"> 
+                  <b> 
+                  <? print $MSG_349; ?>
+                  </b> </font></td>
+              </tr>
+              <tr> 
+                <td bgcolor="#FFFFFF"> 
+                  <table width="100%" border="0" cellspacing="1" cellpadding="2">
+                    <tr bgcolor="#CCCCCC"> 
+                      <td colspan="2"><b><font face="Tahoma, Verdana" size="2" color="#333333"> 
+                        <? print $MSG_361; ?>
+                        </font></b></td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="73%"><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_351; ?>
+                        </font></td>
+                      <td width="27%"> 
+                        <div align="RIGHT"><font face="Tahoma, Verdana" size="2"> 
+                          <? print intval($COUNTERS[users]); ?>
+                          </font></div>
+                      </td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="73%"><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_352 ?>
+                        </font></td>
+                      <td width="27%"> 
+                        <div align="RIGHT"><font face="Tahoma, Verdana" size="2"> 
+                          <? print $COUNTERS[inactiveusers]; ?>
+                          </font></div>
+                      </td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="73%"><font face="Tahoma, Verdana" size="2"> <b> 
+                        <? print $MSG_350; ?>
+                        </b> </font></td>
+                      <td width="27%"> 
+                        <div align="RIGHT"><b><font face="Tahoma, Verdana" size="2"> 
+                          <? print $COUNTERS[users]; ?>
+                          </font></b></div>
+                      </td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="73%"><img src="images/transparent.gif" width="1" height="1"></td>
+                      <td width="27%"><img src="images/transparent.gif" width="1" height="1"></td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="73%"><b><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_353; ?>
+                        </font></b></td>
+                      <td width="27%"> 
+                        <div align="RIGHT"><b><font face="Tahoma, Verdana" size="2"> 
+                          <? print $COUNTERS[auctions]; ?>
+                          </font></b></div>
+                      </td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="73%"><b><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_354; ?>
+                        </font></b></td>
+                      <td width="27%"> 
+                        <div align="RIGHT"><b><font face="Tahoma, Verdana" size="2"> 
+                          <? print $COUNTERS[closedauctions]; ?>
+                          </font></b></div>
+                      </td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="73%"><b><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_355; ?>
+                        </font></b></td>
+                      <td width="27%"> 
+                        <div align="RIGHT"><b><font face="Tahoma, Verdana" size="2"> 
+                          <? print $COUNTERS[bids]; ?>
+                          </font></b></div>
+                      </td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="1" cellpadding="2">
+                    <tr bgcolor="#99CCFF"> 
+                      <td colspan="2"><img src="images/transparent.gif" width="1" height="1"></td>
+                    </tr>
+                    <tr bgcolor="#CCCCCC"> 
+                      <td colspan="2"><b><font face="Tahoma, Verdana" size="2" color="#333333"> 
+                        <? print $MSG_360; ?>
+                        </font></b> &nbsp;&nbsp; <font face="Tahoma, Verdana" size="1"> 
+                        ( 
+                        <? print $MSG_362; ?>
+                        <? print $RESET_DATE; ?>
+                        ) </font></td>
+                    </tr>
+                    <tr bgcolor="#EEEEEE"> 
+                      <td colspan="2"><font face="Tahoma, Verdana" size="2"> </font></td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="60%"><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_356; ?>
+                        </font></td>
+                      <td width="40%" align=RIGHT> <font face="Tahoma, Verdana" size="2"> 
+                        <?=$COUNTERS[transactions]?>
+                        </font> </td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="60%"><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_357; ?>
+                        </font></td>
+                      <td width="40%" align=RIGHT> <font face="Tahoma, Verdana" size="2"> 
+                        <?=print_money($COUNTERS[totalamount])?>
+                        </font> </td>
+                    </tr>
+                    <tr bgcolor="#E1E8F2"> 
+                      <td width="60%"><font face="Tahoma, Verdana" size="2"> 
+                        <? print $MSG_364; ?>
+                        </font></td>
+                      <td width="40%" align=RIGHT> <font face="Tahoma, Verdana" size="2"> 
+                        <?=print_money($COUNTERS[fees])?>
+                        </font> </td>
+                    </tr>
+                    <form name=resetcounters action=<?=basename($PHP_SELF)?> method=post>
+                      <input type=hidden name=process value="">
+                      <tr bgcolor="#FFCC00"> 
+                        <td colspan="2" align=CENTER><font face="Tahoma, Verdana" size="2"> 
+                          <input type="submit" name="Submit" value="<?=$MSG_359; ?>" onClick="ConfirmReset()">
+                          <br>
+                          <input type="submit" name="Submit" value="<?=$MSG_1028; ?>"
+																onClick="ConfirmUpdate()">
+                          </font></td>
+                      </tr>
+                    </form>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </TD>
+  </TR>
+</TABLE>

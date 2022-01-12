@@ -1,0 +1,122 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<html>
+<head>
+<title>
+<?=$SETTINGS[title]?>
+</title>
+<link rel='stylesheet' type='text/css' href='<?=phpa_include("style.css")?>' />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+<div class="container">
+        <div id="logo">
+            <?php
+            if($SETTINGS['logo']) {
+            	if ($HTTPS == '1' || $HTTPS == 'on') {
+            		$SITEURL = $Https['httpsurl'];
+            	} else {
+            		$SITEURL = $SETTINGS['siteurl'];
+            	}
+        	?>
+            <a href="<?=$SITEURL?>index.php?"><img src="<?=$SITEURL.phpa_uploaded().$SETTINGS['logo'];?>" border="0" alt="<?=$SETTINGS['sitename']?>"/></a>
+            <?php
+            } else {
+            	print "&nbsp;";
+            }
+        	?>
+        </div>
+    <div class="content">
+        <div class="tableContent3">
+            <div class="titTable2">
+                FAQs
+            </div>
+            <div class="table2">
+                <form name=faqsindex action=viewfaqs.php method=post>
+                    <table width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+                        <tr>
+                            <td width="46%" >
+                                <select name="cat" onChange="document.faqsindex.submit()">
+                                    <?php
+                                    while($cat = mysql_fetch_array($res_c)) {
+                                    	$cat[category]=stripslashes($cat[category]);
+                                    	print "<option value=".$cat['id'].">".$cat['category']."</option>\n";
+                                    }
+									?>
+                                </select>
+                            </td>
+                            
+              <td> <a href="faqs.php">
+                <?=$MSG_5243?>
+                </a> | <a href="javascript:window.close()"> 
+                <?=$MSG_678?>
+                </a> </td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="titTable2a">
+                    <?=$NAME?>
+                </div>
+                <?php
+                if(is_array($FAQSQUESTION)) {
+                ?>
+                
+        <div> 
+          <UL>
+            <?php
+                        while(list($k,$v) = each($FAQSQUESTION)) {
+						?>
+            <li><a href="#<?=$k?>"><?=$v?></a></li>
+            <?php
+                        }
+						?>
+          </UL>
+                </div>
+                <?php
+                }
+  				?>
+                <!-- ** DISPLAY FAQs ** -->
+                <?php
+                if(is_array($FAQSQUESTION)) {
+                	foreach($FAQSQUESTION as $t=>$y) {
+				?>
+                <div>
+				<TABLE WIDTH=100% CELLPADDING=4 CELLSPACING=0 BORDER=0>
+				<TR>
+					<TD>
+                    <a name="<?=$t?>"></a>
+                    <b>
+                    <?=stripslashes($y)?>
+                    </b> <br>
+                    <?=stripslashes($FAQSANSWER[$t])?>
+                </div>
+                <div style="text-align:right">
+                    <a href="#top">
+                    <?=$MSG_5245?>
+                    </a>
+                </div>
+				</TD>
+				</TR>
+				</TABLE>
+                <?php
+                	}
+                }
+  				?>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle="";
+include phpa_include("template_user_menu_header.html");
+if(isset($_SESSION['TMP_MSG']) || isset($request_sent)) {
+  		?>
+	<p style="background-color;#FF9933;display:block" >
+	<?php
+	if(isset($_SESSION['TMP_MSG'])) {
+		print "<b>".setsspan($TMP_MSG,"color:white")."</b>";
+		unset($_SESSION["TMP_MSG"]);
+	} else {
+		print "<B>".setsspan($request_sent,"color:white")."</b>";
+	}
+	?>
+	</p>
+<?php
+}
+switch($_SESSION['cptab']) {
+    default:
+	case "account":
+	include phpa_include("template_user_menu_account.html");
+	break;
+	case "selling":
+	include phpa_include("template_user_menu_selling.html");
+	break;
+	case "buying":
+	include phpa_include("template_user_menu_buying.html");
+	break;
+}
+include phpa_include("template_user_menu_footer.html");
+?>

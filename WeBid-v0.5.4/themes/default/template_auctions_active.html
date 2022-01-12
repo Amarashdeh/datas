@@ -1,0 +1,76 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $MSG_219 ?><a href="profile.php?user_id=<?php print $user_id; ?>"><?php print $TPL_user_nick; ?></a>
+        </div>
+        <div class="table2">
+            <table width="100%" border=0 cellpadding=4 cellspacing=1>
+                <tr align=CENTER>
+                    <th width="10%"><?php print $MSG_167; ?></th>
+                    <th width="45%"><?php print $MSG_168; ?></th>
+                    <th width="15%"><?php print $MSG_169; ?></th>
+                    <th width="15%"><?php print $MSG_170; ?></th>
+                    <th width="15%"><?php print $MSG_171; ?></th>
+                </tr>
+                <?php print stripslashes($TPL_auctions_list_value); ?>
+            </table>
+			<table width=100% cellpadding=0 cellspacing=0 border=0>
+				<tr>
+					<td align=CENTER>
+						<?=$MSG_5117?>&nbsp;&nbsp;<?=$PAGE?>
+						<?=$MSG_5118?>&nbsp;&nbsp;<?=$PAGES?>
+						<br>
+						<?php
+						$PREV = intval($PAGE - 1);
+						$NEXT = intval($PAGE  + 1);
+						if($PAGES > 1) {
+							if($PAGE > 1) {
+							?>
+						<a href="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$PREV?>&user_id=<?=$user_id?>"><u>
+						<?=$MSG_5119?>
+						</u></a> &nbsp;&nbsp;
+						<?php
+							}
+							$LOW = $PAGE - 5;
+							if($LOW <= 0) $LOW = 1;
+							$COUNTER = $LOW;
+							while($COUNTER <= $PAGES && $COUNTER < ($PAGE+6)) {
+								if($PAGE == $COUNTER) {
+									print "<B>$COUNTER</B>&nbsp;&nbsp;";
+								} else {
+									print "<A HREF=\"".basename($_SERVER[PHP_SELF])."?PAGE=$COUNTER&user_id=$user_id\"><U>$COUNTER</U></A>&nbsp;&nbsp;";
+								}
+								$COUNTER++;
+							}
+						?>
+						&nbsp;&nbsp;
+						<?php
+						if($PAGE < $PAGES) {
+								?>
+						<a href="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$NEXT?>&user_id=<?=$user_id?>"><u>
+						<?=$MSG_5120?>
+						</u></a>
+						<?php
+						}
+						}
+						?>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </div>
+</div>

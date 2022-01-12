@@ -1,0 +1,44 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0  BORDER=0>
+  <TR>
+    <TD align="center">&nbsp;
+        <TABLE WIDTH="90%" CELLSPACING="0" CELLPADDING="1" BORDER="0" BGCOLOR="<?=$SETTINGS[bordercolor]?>">
+          <TR>
+            <TD><TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="4">
+              <TR> 
+                <TD BGCOLOR="#eeeeee"><B> 
+                  <?=$tlt_font?>
+                  <?=$MSG_415?>
+                  </B></TD>
+              </TR>
+              <TR> 
+                <TD >
+                  <?=$SETTINGS[errortext]?>
+                  <BR> <FONT FACE=Courier SIZE=2> 
+                  <?=$_SESSION[SESSION_ERROR]?>
+                  </FONT> <P> 
+                    <?=$MSG_416?>
+                    <A HREF=mailto:<?=$SETTINGS[errormail]?>> 
+                    <?=$SETTINGS[errormail]?>
+                    </A> </P></TD>
+              </TR>
+            </TABLE></TD>
+          </TR>
+        </TABLE>
+      &nbsp;</CENTER></TD>
+  </TR>
+</TABLE>

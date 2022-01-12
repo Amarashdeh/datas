@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>
+<?=$SETTINGS[title]?>
+</title>
+<link rel='stylesheet' type='text/css' href='<?=phpa_include("style.css")?>' />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+<div class="container">
+	<div id="logo">
+		<?php
+		if($SETTINGS['logo']) {
+			if ($HTTPS == '1' || $HTTPS == 'on') {
+				$SITEURL = $Https['httpsurl'];
+			} else {
+				$SITEURL = $SETTINGS['siteurl'];
+			}
+		?>
+		<a href="<?=$SITEURL?>index.php?"><img src="<?=$SITEURL.phpa_uploaded(false).$SETTINGS['logo']?>" border="0" alt="<?=$SETTINGS['sitename']?>"/></a>
+		<?php
+		} else {
+			print "&nbsp;";
+		}
+	?>
+	</div>
+    <div class="content">
+        <div class="tableContent3">
+            <div class="titTable2">
+                FAQs
+            </div>
+            
+      <div class="table2"> 
+        <div style="text-align:right">
+                    <a href="javascript:window.close()">
+                    <?=$MSG_678?>
+                    </a>
+                </div>
+                <ul>
+                    <?php
+                    while($cat = mysql_fetch_array($res_c)) {
+  					?>
+                    <li><a href="viewfaqs.php?cat=<?=$cat[id]?>">
+                        <?=stripslashes($cat[category])?>
+                        </a></li>
+                    <?php
+                    }
+  					?>
+                </ul>
+				
+				
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

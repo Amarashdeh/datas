@@ -1,0 +1,111 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $MSG_208; ?>
+        </div>
+        <?if(!empty($TPL_errmsg)) {?>
+        <div CLASS=errfont>
+            <?=$TPL_errmsg ?>
+        </div>
+        <?}?>
+        <div class="titTable3">
+            <a href="item.php?id=<?php echo $_REQUEST['auction_id']; ?>">
+                <?=$MSG_138; ?>
+                </a> | 
+            <a href="profile.php?user_id=<?php echo $_GET['id']; ?>">
+                <?=$MSG_505; ?>
+                </a>
+        </div>
+        <div class="table2">
+            <form name=addfeedback action="feedback.php?id=<?php echo $_GET['id']; ?>" method="POST">
+                <table width="100%" cellspacing="0" cellpadding="1">
+                    <tr>
+                        <td>
+                            <table width="100%" border="0" cellpadding="4" cellspacing="0">
+                                <tr>
+                                    <td colspan=2>
+                                        <?="$TPL_nick ($TPL_feedbacks_num)"?>
+                                        <br>
+                                        <?=$TPL_rate_ratio_value?>
+                                        <br>
+                                        <br>
+                                    </td>
+                                </tr>
+                                <?php
+                                if(is_array($feed_disp)) {
+                                    foreach($feed_disp as $k=>$v) {
+                                  ?>
+                                <tr bgcolor="<?=(($k%2) ? "#EEEEEE" : "#FFFFFF")?>">
+                                    <td valign="top" bgcolor="<?=(($k%2) ? "#EEEEEE" : "#FFFFFF")?>"> <img src="<?=$v['img']?>" align="middle" alt="" /> <b><a href="<?=$v['usflink']?>">
+                                        <?=$v['username']?>
+                                        (
+                                        <?=$v['usfeed']?>
+                                        )</a></b>&nbsp;
+                                        <?=$v['usicon']?>
+                                        <?="(".$MSG_506.$v['feedbackdate']." ".$MSG_25_0177." ".$v['auctionurl'].")"?>
+                                        <p>
+                                            <?=$v['feedback']?>
+                                            <?php
+                                            if(is_array($v['feedforum'])) {
+                                            ?>
+                                    </td>
+                                    <td>
+                                        <table width="100%" cellspacing="1" cellpadding="4">
+                                            <?php
+                                            foreach($v['feedforum'] as $kf=>$vf) {
+                                            ?>
+                                            <tr bgcolor="<?=(($kf%2) ? "#FFFFFF" : "#EEEEEE")?>">
+                                                <td width="30%">
+                                                    <?=$vf['username'].$MSG_25_0203.$vf["commentdate"].$MSG_25_0202?>
+                                                </td>
+                                                <td width="70%">
+                                                    <?=$vf['comment']?>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </table>
+                                        <?php
+                                            } else {
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            }
+                                        ?>
+                                        <br>
+                                        <?=$v['nextfeedforum']?>
+                                    </td>
+                                </tr>
+                                <?php
+                                    }
+                                }
+                                  ?>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=center> <?php echo stripslashes($echofeed); ?></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="TPL_nick_hidden" value="<?php echo $TPL_nick; ?>">
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,232 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?> 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="content">
+  <tr>
+    <td width="22%" valign="top" class="columL">
+		<table border="0" style="height:100%; width:100%;">
+                <tr>
+                  <td class="titTable1"><div class="imgTitL"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div>
+            <?=$MSG_276; ?><div class="imgTitR"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="transparent"></div></td>
+                </tr>
+                <tr>
+                  <td class="table1"><div id="table1ul">
+            	<?php print $TPL_categories_value; ?>
+            	</div></td>
+                </tr>
+              </table>
+
+	</td>
+    <td valign="top">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="maincolum">
+        <?php
+	if($SETTINGS['featureditems'] == 'y' && is_array($_FEATURED_ID)) {
+	?>
+	  <tr>
+		<td class="titTable2"><div class="imgTitL"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div>
+            <?=strtoupper($MSG_5225)?></td>
+	  </tr>
+	  <tr>
+        <td class="table2"> 
+		<TABLE WIDTH=100%>
+    		<div id="featAuctions">
+                <?php 
+                    foreach ($_FEATURED_ID as $k => $v) {
+                    	if($k % $SETTINGS['featuredcolumns'] == 0) {
+        	?>
+                    <tr VALIGN=TOP>
+                <?}?>
+		<TD ALIGN=CENTER>
+			<div class="featAuction">
+                <p><A HREF="./item.php?id=<?=$v['id']?>"><IMG SRC="<?=$v['pict_url']?>" alt="<?=stripslashes($v['title'])?>" WIDTH=<?=$SETTINGS['thimbnailswidth']?> border="0"></A></p>
+                <p><A HREF="./item.php?id=<?=$v['id']?>"><?=stripslashes($v['title'])?></a></p>
+				<p>
+				<?php
+					if($v['bn_only']!='y') print $MSG_116;
+				?>&nbsp;<A HREF="javascript:window_open('converter.php?AMOUNT=<?=$v['current_bid']?>','curr',650,200,30,30)"><?=print_money($v['current_bid'])?></A>
+				<?php
+					if($v['bn_only']=='y'){
+				?>
+				<A HREF="buy_now.php?id=<?=$v['id']?>"><img src="images/bn_only.png" border="0" alt="buy now"></A>
+				<?php
+					}
+				?>
+				</p>
+				<p><?="$MSG_112:&nbsp;"?><?=FormatDate($v['ends'])?></p>
+			</div>
+		</TD>
+	      <?php
+	      if(($k+1) == $SETTINGS['featuredcolumns'] || $k==count($_FEATURED_ID)) {
+			?>
+	    </tr>		
+            <?php
+	    	}
+         } //foreach
+            ?>
+    	</div>
+	</TABLE>
+    <?php
+	}else{
+	?>
+	  <tr>
+		<td height=1 valign=top><IMG SRC="images/transparent.gif" width="100%" height="1"  alt="space"></td>
+	  </tr>
+	 <?}?>
+  <?php
+	if($TPL_last_auctions_value != "") {
+	?>
+  <tr>
+    <td class="titTable4"><?php print $MSG_278; ?></td>
+  </tr>
+  <tr>
+    <td class="table2"><?php print $TPL_last_auctions_value; ?></td>
+  </tr>
+  	<?php
+	}
+	?>
+	  <?php
+    if($TPL_maximum_bids != "") {
+	?>
+  <tr>
+    <td class="titTable4"><?php print $MSG_279; ?></td>
+  </tr>
+  <tr>
+    <td class="table2"><?php print $TPL_maximum_bids; ?></td>
+  </tr>
+  	<?php
+	}
+	?>
+	 <?php
+    if($TPL_ending_soon_value != "") {
+	?>
+  <tr>
+    <td class="titTable4"><?php print $MSG_280; ?></td>
+  </tr>
+  <tr>
+    <td class="table2"><?php print $TPL_ending_soon_value; ?></td>
+  </tr>
+  	<?php
+	}
+	?>
+</table>
+	</td>
+      
+    <td width="20%" valign="top" class="columR">
+	<?php
+  if(count($LANGUAGES) > 1) {
+  ?>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="titTable1"><div class="imgTitL"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div><?=$MGS_2__0001?><div class="imgTitR"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div></td>
+        </tr>
+        <tr>
+          <td class="table1"><?ShowFlags()?></td>
+        </tr>
+      </table>
+  <?php
+  }
+  ?>
+  <?php
+  if($SETTINGS['loginbox'] == 1) {
+  	if(!$_SESSION["PHPAUCTION_LOGGED_IN"]) {
+  	?>
+        <FORM NAME="login" ACTION="<?=$Https['httpsurl']?>login.php" METHOD="post"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="titTable1"><div class="imgTitL"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div><?php print $MSG_221; ?><div class="imgTitR"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div></td>
+        </tr>
+        <tr>
+          <td class="table1">
+	  <TABLE WIDTH="100%">
+	  <?php
+	  	if(isset($_SESSION['loginerror'])){
+	  ?>
+	  	<TR>
+		<TD colspan="2" class="errfont">
+		<?php
+			print $_SESSION['loginerror'];
+			unset($_SESSION['loginerror']);
+		?>
+		</TD>
+		</TR>
+	  <?php
+	  	}
+	  ?>
+	  	<TR>
+		<TD WIDTH="25%"><label for="username" title="please enter your username"><?php print $MSG_003; ?>&nbsp;</label></TD>
+		<TD WIDTH="75%"><input type="text" name="username" id="username" size="10" MAXLENGTH="20"></TD>
+		</TR>
+		<TR>
+		<TD WIDTH="25%"><label for="password" title="please enter your password"><?php print $MSG_004; ?>&nbsp;</label></TD>
+		<TD WIDTH="75%"><input type="password" name="password" id="password" size="10" MAXLENGTH="20"></TD>
+	    </TR>
+	  </TABLE>
+            <p><input type="checkbox" name="rememberme" id="rememberme" value="1"><label for="rememberme">&nbsp;<?=$MSG_25_0085; ?></label></p>
+            <p align="center"><input type="submit" name="action" value="<?php print $MSG_275; ?>" class="button"></p>
+            <p><a href="forgotpasswd.php"><?php print $MSG_215; ?></a></p></td>
+        </tr>
+      </table>
+        </FORM>
+   	<?php
+   	} else {
+	?><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="titTable1"><div class="imgTitL"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div><?php print $MSG_200."&nbsp;".$_SESSION['PHPAUCTION_LOGGED_IN_USERNAME']; ?><div class="imgTitR"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div></td>
+        </tr>
+        <tr>
+          <td>
+		<ul>
+                <li><a href="./edit_data.php?"> <?=$MSG_244; ?></a></li>
+                <li><a href="user_menu.php"> <?=$MSG_622; ?> </a></li>
+                <li><a href="logout.php"> <?=$MSG_245; ?></a></li>
+              </ul></td>
+        </tr>
+      </table>
+    <?php
+	}
+  }
+  ?>
+  <?php
+  if(!empty($TPL_helptopics)) {
+  ?>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="titTable1"><div class="imgTitL"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div><?php print $MSG_281; ?><div class="imgTitR"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div>
+</td>
+        </tr>
+        <tr>
+          <td class="table1ul">
+		  		<?php print $TPL_helptopics; ?></td>
+        </tr>
+      </table>
+  <?php
+  }
+  ?>
+  <?php
+  if($SETTINGS['newsbox'] == 1) {
+  ?><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="titTable1"><div class="imgTitL"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div><?php print $MSG_282; ?><div class="imgTitR"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="space"></div>
+</td>
+        </tr>
+        <tr>
+          <td class="table1ul">
+		  		<?php print $TPL_news_list; ?></td>
+        </tr>
+      </table>   
+  <?php
+  }
+  ?>
+	  </td>
+  </tr>
+</table>

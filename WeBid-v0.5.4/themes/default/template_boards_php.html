@@ -1,0 +1,60 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?=$MSG_5030?>
+        </div>
+        <div class="table2">
+            <table width="100%" border="0" cellspacing="1" cellpadding="4" align="center">
+                <tr>
+                    <th width="50%" valign="top">
+                        <?=$MSG_5034?>
+                        </th>
+                    <th width="25%" valign="top">
+                        <?=$MSG_5043?>
+                        </th>
+                    <th width="25%" valign="top">
+                        <?=$MSG_5053?>
+                        </th>
+                </tr>
+                <?php
+                while($board = mysql_fetch_array($ress_))
+                {
+		   		?>
+                <tr bgcolor="#EEEEEE">
+                    <td width="50%" valign="top"><a href="msgboard.php?board_id=<?=$board['id']?>">
+                        <?=$board['name']?>
+                        </a></td>
+                    <td width="25%" valign="top" align=CENTER>
+                        <?=$board['messages']?>
+                    </td>
+                    <td width="25%" valign="top" align=CENTER>
+                        <?php
+                        if(!empty($board['lastmessage'])) {
+                        	print FormatDate($board['lastmessage']);
+                        } else {
+                        	print "--";
+                        }
+			   			?>
+                    </td>
+                </tr>
+                <?php
+                }
+		   		?>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $TPL_title; ?>
+        </div>
+        <div class="table2">
+            <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                <tr>
+                    <td width="20%" valign=TOP>
+                        <?php
+                        if(is_array($NEWSINDEX)) {
+                        	foreach($NEWSINDEX as $k=>$v) {
+                        		print "<A HREF=viewnew.php?id=$k>$v</A><br>";
+                        		print FormatDate($NEWSDATE[$k])."<br>";
+                        	}
+                        }
+						?>
+                    </td>
+                    <td valign=TOP> <?php print nl2br(stripslashes($new[content])); ?> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

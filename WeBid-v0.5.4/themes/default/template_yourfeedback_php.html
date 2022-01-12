@@ -1,0 +1,80 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_25_0223;
+include phpa_include("template_user_menu_header.html");
+?>
+<table width="90%" border="0" cellpadding="1" cellspacing="0" ALIGN=CENTER>
+    <tr  >
+        <td colspan="2" align=right>
+            <h3><?=$TPL_nick?></h3>
+            <?="(".$TPL_feedbacks_sum.")"?>
+            <br>
+            <?=$TPL_rate_ratio_value?>
+        </td>
+    </tr>
+    <?php
+    if(is_array($feed_disp)) {
+        foreach($feed_disp as $k=>$v) {
+            if(!($k%2)) $BGCOLOR = ""; else $BGCOLOR = 'class="alt-row"';
+    ?>
+    <tr <?=$BGCOLOR?>>
+        <td valign="top">
+            <img src="<?=$v['img']?>" align="middle" alt="">
+        <td valign="top">    <b><a href="<?=$v['usflink']?>">
+            <?=$v['username']?>
+            (
+            <?=$v['usfeed']?>
+            )</a></b>&nbsp;
+            <?=$v['usicon']?>
+            <?="(".$MSG_506.$v['feedbackdate']." ".$MSG_25_0177." ".$v['auctionurl'].")"?>
+            <br>
+            <b><?=$MSG_504.": "?></b><?=$v['feedback']?>
+                <?php
+                if(is_array($v['feedforum'])) {
+                ?>
+                <?php
+                foreach($v['feedforum'] as $kf=>$vf) {
+                    if(!($kf%2)) $BGCOLOR = ""; else $BGCOLOR = 'class="alt-row"';
+                ?>
+                <tr <?=$BGCOLOR?>>
+                    <td>&nbsp;</td>
+                    <td>
+                        <b><?=$MSG_25_0202?></b><?=$vf['username'].$MSG_25_0203.$vf["commentdate"]?>
+                        <?=$vf['comment']?>
+                </tr>
+                <?php
+                }
+                ?>
+            </div>
+            <?php
+                }
+            ?>
+            <?=$v['nextfeedforum']?>
+        </td>
+    </tr>
+    <?php
+        }
+    }
+    if(!(($k+1)%2)) $BGCOLOR = ""; else $BGCOLOR = 'class="alt-row"';
+    ?>
+    <tr <?=$BGCOLOR?>>
+        <td colspan="2" align=right><?php echo stripslashes($echofeed); ?>
+        </td>
+    </tr>
+</table>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

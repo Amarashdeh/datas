@@ -1,0 +1,315 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<SCRIPT Language=Javascript>
+function ConfirmDel(){
+  if(confirm('<?=$MSG_30_0087?>')){
+    document.sold.submit();
+  }else{
+    document.sold.reset();
+  }
+}
+function selectAllRelist(formObj, isInverse) 
+{
+   for (var i=0;i < formObj.length;i++) 
+   {
+      fldObj = formObj.elements[i];
+      if (fldObj.type == 'checkbox' && fldObj.name.substring(0,6)=='relist')
+      { 
+         if(isInverse)
+            fldObj.checked = (fldObj.checked) ? false : true;
+         else fldObj.checked = true; 
+       }
+   }
+}
+</SCRIPT>
+<?php
+$TMP_usmenutitle=$MSG_25_0119;
+include phpa_include("template_user_menu_header.html");
+?>
+<?php
+#// Display relisted auctions resume
+if(is_array($TOTALFEES)) {
+?>
+
+<table width="100%" border="0" align="CENTER" cellpadding="4" cellspacing="1" >
+    <tr bgcolor="<?=$SETTINGS[bordercolor]?>">
+        <td colspan="2" align=CENTER>
+            <?=$MGS_2__0074?>
+        </td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+        <td width="66%" bgcolor="#CCCCCC">
+            <?=$MGS_2__0075?>
+        </td>
+        <td width="34%" align=center bgcolor="#CCCCCC">
+            <?=$MGS_2__0076?>
+        </td>
+    </tr>
+    <?php
+    while(list($k,$v) = each($TOTALFEES)) {
+      $FEES_GRANDTOTAL += $v;
+    ?>
+    <tr bgcolor="#EEEEEE">
+        <td width="66%" bgcolor="#EEEEEE">
+            <?=$RELISTED_TITLE[$k]?>
+        </td>
+        <td width="34%" align=right bgcolor="#EEEEEE">
+            <?=print_money($v);?>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+    <tr>
+        <td width="66%" >&nbsp;</td>
+        <td width="34%" align=right bgcolor="#FFFF00">
+            <?=print_money($FEES_GRANDTOTAL);?>
+        </td>
+    </tr>
+</table>
+<?php
+}
+?>
+<form name="sold" method="post" action="<?=basename($_SERVER[PHP_SELF])?>">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="CENTER">
+        <tr>
+            <td colspan="9" align=right class=white>
+                <div>
+                    <dl class="phpa-tabs">
+                        <dd> <a href=yourauctions_p.php>
+                            <?=$MSG_25_0115?>
+                            </a> </dd>
+                        <dd> <a href=yourauctions.php>
+                            <?=$MSG_619?>
+                            </a> </dd>
+                        <dd> <a href=yourauctions_c.php>
+                            <?=$MSG_204?>
+                            </a> </dd>
+                        <dd> <a href=yourauctions_s.php>
+                            <?=$MGS_2__0056?>
+                            </a> </dd>
+                    </dl>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="1" cellpadding="4" align="CENTER">
+        <tr bgcolor="<?=$SETTINGS[bordercolor]?>">
+            <td class=titTable1 width="40%"> <a href=<?=basename($_SERVER['SCRIPT_NAME'])?>?solda_ord=title&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$MSG_624?>
+                </a>
+                <?php
+                if($_SESSION['solda_ord'] == 'title') {
+                ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=title&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$_SESSION['solda_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="10%"> <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=starts&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$MSG_625?>
+                </a>
+                <?php
+                if($_SESSION['solda_ord'] == 'starts') {
+                ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=starts&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$_SESSION['solda_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="10%"> <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=ends&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$MSG_626?>
+                </a>
+                <?php
+                if($_SESSION['solda_ord'] == 'ends') {
+                ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=ends&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$_SESSION['solda_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            <td class=titTable1 width="10%" align=center> <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=num_bids&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$MSG_627?>
+                </a>
+                <?php
+                if($_SESSION['solda_ord'] == 'num_bids') {
+                ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=num_bids&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$_SESSION['solda_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="11%" align=center> <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=current_bid&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$MSG_628?>
+                </a>
+                <?php
+                if($_SESSION['solda_ord'] == 'current_bid') {
+                ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?solda_ord=current_bid&solda_type=<?=$_SESSION['solda_nexttype']?>>
+                <?=$_SESSION['solda_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="10%" align=center>
+                <?=$MSG_630?>
+            </td>
+        </tr>
+        <?php
+        if(is_array($C_IDS)) {
+          while(list($f,$v) = each($C_IDS)) {
+            if(@in_array($v,$_SESSION['CLOSED_EDITED'])) {
+              $BGCOLOR = "#FFCCFF";
+            } else {
+              $BGCOLOR = "#EEEEEE";
+            }
+        ?>
+        <tr bgcolor="<?=$BGCOLOR?>">
+            <td width="40%"> <a href="item.php?id=<?=$v?>">
+                <?=$C_TITLE[$f]?>
+                </a> </td>
+            <td width="10%">
+                <?=FormatDate($C_STARTS[$f])?>
+            </td>
+            <td width="10%">
+                <?=FormatDate($C_ENDS[$f])?>
+            </td>
+            <td width="10%"  align=CENTER>
+                <?=$C_BIDS[$f]?>
+            </td>
+            <td width="11%"  align=CENTER>
+                <?php
+                if($C_BID[$f] == 0) {
+                  print "-";
+                } else {
+                  print print_money($C_BID[$f]);
+                }
+                ?>
+            </td>
+            <td width="10%"  align=CENTER>
+                <?php  
+                /**
+                * NOTE: Relisting option
+                * If Invoicing is enabled the ability to relist more then 1 auction at once is available
+                * If envoicing is not enabled the 1 by 1 option is available
+                */
+                if($SETTINGS['invoicing'] == 'y') {
+                  if($C_CLOSED[$f] == 1){
+                ?>
+                <input type="checkbox" name="relist[<?=$C_IDS[$f]?>]" value="<?=$C_IDS[$f]?>" />
+                <select name=duration[<?=$C_IDS[$f]?>]>
+                    <?php
+                    reset($DURATIONS);
+                    while(list($t,$y) = each($DURATIONS)) {
+                      print "<OPTION VALUE=$t";
+                      if($C_DURATION[$f] == $t) print " SELECTED";
+                      print ">$y</OPTION>\n";
+                    }
+                ?>
+                </select>
+                <a href="relistauction.php?id=<?=$C_IDS[$f]?>"><img src="images/edititem.gif" width="13" height="17" alt="<?=$MSG_512?>" border="0"></a>
+                <?php
+                  } else {
+                    print $MSG_203;
+                  }
+                } else  { // Invoicing is not enabled
+                  if($C_CLOSED[$f] == 1) {
+                ?>
+                <a href=relistauction.php?id=<?=$C_IDS[$f]?>>
+                <?=$MGS_2__0049;?>
+                </a>
+                <?php
+                  } else {
+                    print $MSG_203;
+                  }
+                }
+                ?>
+            </td>
+        </tr>
+        <?php
+          }
+        }
+        ?>
+        <tr bgcolor="<?=$BGCOLOR?>">
+            <td colspan=6>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="6" align="center">
+                <input type="hidden" name="action" value="update" />
+                <input type="submit" name="Submit" value="<?=$MSG_631?>" class=button onClick=ConfirmDel() />
+            </td>
+        </tr>
+    </table>
+</form>
+<table cellpadding=0 cellspacing=0 border=0 width=100%>
+    <tr>
+        <td align="center">
+            <?=$MSG_5117?>
+            &nbsp;&nbsp;
+            <?=$PAGE?>
+            <?=$MSG_5118?>
+            &nbsp;&nbsp;
+            <?=$PAGES?>
+            <br>
+            <?php
+                $PREV = intval($PAGE - 1);
+                $NEXT = intval($PAGE  + 1);
+            ?>
+            <?php
+                if($PAGES > 1) {
+                    if($PAGE > 1) {
+            ?>
+            <a href="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$PREV?>"><u>
+            <?=$MSG_5119?>
+            </u></a> &nbsp;&nbsp;
+            <?php
+                    }
+                    $LOW = $PAGE - 5;
+                    if($LOW <= 0) $LOW = 1;
+                    $COUNTER = $LOW;
+                    while($COUNTER <= $PAGES && $COUNTER < ($PAGE+6)) {
+                      if($PAGE == $COUNTER) {
+                        print "<B>$COUNTER</B>&nbsp;&nbsp;";
+                      } else {
+                        print "<A HREF=\"".basename($_SERVER[PHP_SELF])."?PAGE=$COUNTER\"><U>$COUNTER</U></A>&nbsp;&nbsp;";
+                      }
+                      $COUNTER++;
+                    }
+            ?>
+            &nbsp;&nbsp;
+            <?php
+                    if($PAGE < $PAGES) {
+            ?>
+            <a href="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$NEXT?>"><u>
+            <?=$MSG_5120?>
+            </u></a>
+            <?php
+                    }
+                }
+            ?>
+        </td>
+    </tr>
+</table>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

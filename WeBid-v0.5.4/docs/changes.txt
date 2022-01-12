@@ -1,0 +1,33 @@
+0.5.4 - 30/08/08
+-----------------------------
+Renlok
+- Cleaned up select category page
+- Fixed create auction page
+- Cleaned up more of the language files
+- Cleaned up the config file
+- Fixed timeout errors with install file
+- Fixed SQL errors
+
+0.5.3 - 01/07/08
+-----------------------------
+Renlok
+- Cleaned a few of the template pages up
+- On contact user page it sends a copy of the message to thier message box aswell as sending an email
+- Edited the closed auction page so the ended time works correctly, also cleaned up the coding
+- Added a discription to Watch Action page
+- Fix the image display error in item_watch
+- Fix error with the cron
+- Make some changes to the feedback system to make it much neater
+- Fixed an item on view item when youve not logged in
+- Removed some useless files
+- Added an error log
+- Removed everything todo with aboutme pages as they dont exist yet
+- cleaned up the SQL
+- linked user address to location of item location
+- Add 'drop table if exists' queries to install file to help avoid bad installations
+- Added installation checks
+
+
+0.5.2 and older
+-----------------------------
+...who knows

@@ -1,0 +1,15 @@
+<?#//v.3.0.0
+  
+#///////////////////////////////////////////////////////
+#//  COPYRIGHT 2004 Phpauction.org ALL RIGHTS RESERVED//
+#///////////////////////////////////////////////////////
+
+
+//--Set the variables below according to your system configuration
+
+$DbHost     = "@DbHost@"; // The host where the MySQL server resides
+$DbDatabase = "@DbDatabase@"; // The database you are going to use
+$DbUser     = "@DbUser@"; // Username
+$DbPassword = "@DbPassword@"; // Password
+
+?>

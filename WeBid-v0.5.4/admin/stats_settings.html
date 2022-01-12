@@ -1,0 +1,151 @@
+<html><head><title>::PHPAUCTION ADMINISTRATION BACK-END::</title><script language="Javascript">
+<!--
+
+function window_open(pagina,titulo,ancho,largo,x,y){
+
+  var Ventana= 'toolbar=0,location=0,directories=0,scrollbars=1,screenX='+x+',screenY='+y+',status=0,menubar=0,resizable=0,width='+ancho+',height='+largo;
+  open(pagina,titulo,Ventana);
+
+}
+//-->
+</script>
+
+<link rel='stylesheet' type='text/css' href='style.css' />
+</head>
+<body bgcolor="#ffffff" text="#08428c" link="#08428c" vlink="#08428c" alink="#08428c" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="98%" border="0" cellspacing="0" cellpadding="4" bgcolor="#eeeeee" align="center">
+  <tbody><tr bgcolor="#66cc66"> 
+		<td width="43%" valign="middle" bgcolor="#ffffff"><a href="http://172.26.0.10/phpauction-XL/admin/admin.php"><img src="stats_settings_files/logo.gif" width="255" height="70" border="0"></a></td>
+		<td width="57%" valign="bottom" align="center" bgcolor="#ffffff"> 
+			<div align="right"><font face="Verdana,Arial,Helvetica" size="4" color="#000066"> 
+				<font color="#3366cc" face="Tahoma, Verdana" size="5"><b><font face="Arial, Helvetica, sans-serif" color="#666666">ADMINISTRATION 
+				BACK-END</font></b></font></font> </div>
+		</td>
+	</tr>
+</tbody></table>
+<table width="98%" border="0" cellspacing="0" cellpadding="0" bgcolor="#eeeeee" align="center">
+  <tbody><tr bgcolor="#000000"> 
+		<td valign="top" height="1" colspan="2"><img src="stats_settings_files/transparent.gif" width="1" height="1"></td>
+	</tr>
+	<tr bgcolor="#99ccff"> 
+		<td valign="top" height="17" width="299"><font face="Verdana" size="2" color="#000000"> 
+					Logged in as: 			<b> 
+			admin			</b></font>
+					</td>
+		<td valign="top" height="17" align="right" width="351">
+					<a href=""> 
+			</a> <a href="http://172.26.0.10/phpauction-XL/admin/admin.php"><font face="Tahoma, Verdana" size="2" color="#333333">Admin 
+			Home</font></a><font face="Tahoma, Verdana" size="2"> <font color="#000000">|</font> 
+			<a href="http://172.26.0.10/phpauction-XL/admin/logout.php"><font color="#333333">Logout</font></a></font>
+				</td>
+	</tr>
+	<tr bgcolor="#333333"> 
+		<td valign="top" height="1" colspan="2"><img src="stats_settings_files/transparent.gif" width="1" height="1"></td>
+	</tr>
+</tbody></table>
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+<tbody><tr>
+<td>
+<center>
+				<br>
+				<form name="conf" action="stats_settings.php" method="post">
+					<table width="650" border="0" cellspacing="0" cellpadding="1" bgcolor="#296fab">
+						<tbody><tr>
+							<td align="center"><font color="#ffffff" face="Verdana, Arial, Helvetica, sans-serif" size="4"><b>
+								Access Statistics								</b></font></td>
+						</tr>
+						<tr>
+							<td>
+								
+                <table width="100%" cellpadding="2" align="center" bgcolor="#ffffff">
+                                    <tbody><tr valign="top"> 
+                    <td width="109">�</td>
+                    <td width="375"><font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2">
+                       Please, choose below if you want Phpauction to generate
+access statistics for your site.                      </font></td>
+                  </tr>
+                  <tr valign="top"> 
+                    <td width="109" height="22"><font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                      Activate Statistics?                      </font></td>
+                    <td width="375" height="22"><font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                      <input type="radio" name="activate" value="y" checked="checked">
+                      Yes                      <input type="radio" name="activate" value="n">
+                      No                      </font></td>
+                  </tr>
+                  <tr valign="top"> 
+                    <td width="109">�</td>
+                    <td width="375"><font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                      Select which type of statistics you want to generate                      </font></td>
+                  </tr>
+                  <tr valign="top"> 
+                    <td width="109">�</td>
+                    <td width="375"><font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                      <input type="checkbox" name="accesses" value="y" checked="checked">
+                      Count Users Accesses                      </font></td>
+                  </tr>
+                  <tr valign="top"> 
+                    <td width="109" height="22">�</td>
+                    <td width="375" height="22"><font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2">
+                      <input type="checkbox" name="browsers" value="y" checked="checked">
+                      Generate browsers and platforms statistics                      </font></td>
+                  </tr>
+                  <tr valign="top">
+                    <td width="109" height="22">�</td>
+                    <td width="375" height="22"><font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2">
+                      <input type="checkbox" name="domains" value="y" checked="checked">
+                      Generate access statistics by domain                      </font></td>
+                  </tr>
+                    <tr valign="top">
+                    <td width="109" height="22">�</td>
+                    <td width="375" height="22">
+					<font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2">
+                      <br><br>Phpauction recognizes the following:��<a href="javascript:window_open('ST_browsers.php','ST_browsers',400,500,30,30)" class="links">Browsers</a> | <a href="javascript:window_open('ST_platforms.php','ST_platforms',400,500,30,30)" class="links">Platforms</a> | <a href="javascript:window_open('ST_countries.php','ST_domains',400,500,30,30)" class="links">Domains</a>                      </font></td>
+                  </tr>
+
+                  <tr valign="top">
+                    <td width="109" height="22">�</td>
+                    <td width="375" height="22">�</td>
+                  </tr>
+                  <tr> 
+                    <td width="109"> 
+                      <input type="hidden" name="action" value="update">
+                    </td>
+                    <td width="375"> 
+                      <input type="submit" name="act" value="Save changes">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td width="109"></td>
+                    <td width="375"> </td>
+                  </tr>
+                </tbody></table>
+				</td>
+				</tr>
+					</tbody></table>
+					</form>
+	<br><br>
+
+	<font face="Verdana, Verdana, Arial, Helvetica, sans-serif" size="2">
+	<a href="http://172.26.0.10/phpauction-XL/admin/admin.php" class="links">Admin Home</a>
+	</font>
+	</center>
+	<br><br>
+
+</td>
+</tr>
+</tbody></table>
+
+<!-- Closing external table (header.php) -->
+
+<table width="740" border="0" align="center">
+  <tbody><tr><td>
+<center>
+				
+				<font face="Verdana,Arial" size="1" color="#999999">
+				Copyright 2000-2002, PHPAUCTION.ORG				</font>
+</center>
+</td></tr>
+</tbody></table>
+
+</body></html>

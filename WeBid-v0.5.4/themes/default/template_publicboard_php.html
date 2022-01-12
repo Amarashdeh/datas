@@ -1,0 +1,174 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<TABLE WIDTH="100%" bgcolor="<?=$BGCOLOR?>" BORDER=0 CELLPADDING="0" CELLSPACING="0">
+  <TR align="center">
+    <TD colspan="2">
+<div class="titTable3"><A HREF="item.php?id=<?=$_SESSION['CURRENT_ITEM']?>"><?=$MSG_138?></A></div>
+<br>
+<FORM NAME=messageboard ACTION=<?=basename($_SERVER["PHP_SELF"])?> METHOD=POST>
+<INPUT TYPE=hidden NAME=todo VALUE="insertmessage" />
+<INPUT TYPE=hidden NAME=id VALUE="<?=$id?>" />
+<TABLE WIDTH="70%" BORDER="0" CELLSPACING="0" CELLPADDING="6" ALIGN="center">
+    <TR>
+          <TD WIDTH="79%" VALIGN="top" class=titTable4>
+          <?php
+          if(basename($_SERVER['PHP_SELF']) == 'publicboard.php'){
+             print $MSG_30_0167;
+          }else{
+              print $MSG_30_0169;
+         }
+         print $_SESSION['CURRENTAUCTIONTITLE'];
+        ?>
+          </TD>
+    </TR>
+</TABLE>
+    <TABLE WIDTH="70%" BORDER="0" CELLSPACING="0" CELLPADDING="6" ALIGN="center" BGCOLOR="#EEEEEE">
+        <TR>
+            <TD WIDTH="79%" VALIGN="top" ALIGN=CENTER>
+            <?php
+                if(!isset($HTTP_SESSION_VARS[PHPAUCTION_LOGGED_IN]))
+                {
+            ?>
+                <FONT COLOR=#FF9900 class=errfont><?=$MSG_5056?></FONT><br>
+            <?php
+                }
+            ?>
+                <TEXTAREA NAME="newmessage" COLS="60" ROWS="5"></TEXTAREA>
+                <br><br>
+                <INPUT TYPE="submit" NAME="Submit" VALUE="<?=$MSG_5057?>" class=button />
+            </TD>
+    </TR>
+</TABLE>
+
+<br>
+<br>
+<TABLE WIDTH="70%" BORDER="0" CELLSPACING="0" CELLPADDING="2" ALIGN="center" BGCOLOR="#EEEEEE">
+    <TR>
+        <TD WIDTH="79%" colspan=2 VALIGN="top" class=titTable4>
+            <?=$MSG_5059?>
+            </TD>
+    </TR>
+</TABLE>
+<!-- ## display messages ## -->
+<?php
+    while($MSG = mysql_fetch_array($res_msgs))
+    {
+?>
+
+<TABLE WIDTH="70%" BORDER="0" CELLSPACING="0" CELLPADDING="0" ALIGN="center">
+    <TR>
+            <TD WIDTH="79%" VALIGN="top" BGCOLOR=#ffffff>
+            <br><?=nl2br(stripslashes($MSG[message]))?>
+            </TD>
+        </TR>
+        <TR>
+
+          <TD WIDTH="79%" VALIGN="top" align=right BGCOLOR=#eeeeee>
+            <?php
+                if($MSG[username])
+                {
+            ?>
+            <FONT SIZE=-2>
+            <?=$MSG_5060?>
+            &nbsp;<B>
+            <?=$MSG[username]?>
+            </B> -
+            <?=FormatDate($MSG[msgdate])?>
+            </FONT>
+            <?php
+                }
+                else
+                {
+            ?>
+            <FONT SIZE=-2>
+            <?=$MSG_5060?>
+            &nbsp;<B>
+            <?=$MSG_5061?>
+            </B> -
+            <?=FormatDate($MSG[msgdate])?>
+            </FONT>
+            <?php
+                }
+            ?>
+          </TD>
+        </TR>
+        <TR>
+            <TD WIDTH="79%" VALIGN="top" ALIGN=CENTER BGCOLOR=#000000><IMG SRC="images/transp.gif" WIDTH="1" HEIGHT="1"></TD>
+        </TR>
+        <TR>
+            <TD WIDTH="79%" VALIGN="top" ALIGN=CENTER BGCOLOR=#ffffff><IMG SRC="images/transp.gif" WIDTH="1" HEIGHT="5"></TD>
+        </TR>
+    </TABLE>
+<?php
+    }
+?>
+<CENTER>
+
+<?=$MSG_5117?>&nbsp;&nbsp;<?=$PAGE?> 
+<?=$MSG_5118?>&nbsp;&nbsp;<?=$PAGES?>
+<br>
+<?php
+    $PREV = intval($PAGE - 1);
+    $NEXT = intval($PAGE  + 1);
+?>
+
+<?php
+    if($PAGES > 1)
+    {
+        if($PAGE > 1)
+        {
+?>
+    <A HREF="<?=basename($_SERVER["PHP_SELF"])?>?id=<?=$id?>&PAGE=<?=$PREV?>"><U>&lt;&lt;Prev</U></a>
+    &nbsp;&nbsp;
+<?php
+        }
+?>
+
+<?php
+        $LOW = $PAGE - 5;
+        if($LOW <= 0) $LOW = 1;
+        $COUNTER = $LOW;
+        while($COUNTER <= $PAGES && $COUNTER < ($PAGE+6))
+        {
+            if($PAGE == $COUNTER)
+            {
+                print "<B>$COUNTER</B>&nbsp;&nbsp;";
+            }
+            else
+            {
+                print "<A HREF=\"".basename($_SERVER["PHP_SELF"])."?id=$id&PAGE=$COUNTER\"><U>$COUNTER</U></A>&nbsp;&nbsp;";
+            }
+            $COUNTER++;
+        }
+?>
+        &nbsp;&nbsp;
+<?php
+    if($PAGE < $PAGES)
+    {
+?>
+        <A HREF="<?=basename($_SERVER["PHP_SELF"])?>?id=<?=$id?>&PAGE=<?=$NEXT?>"><U>Next&gt;&gt;</U></A>
+
+<?php
+    }
+}
+
+?>
+
+</CENTER>
+<br>
+</td>
+</tr>
+</table>
+</FORM>

@@ -1,0 +1,260 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $MSG_001 ?>
+        </div>
+        <?php
+        if(!empty($TPL_errmsg)) {
+        ?>
+        <div class=errfont>
+            <?=$TPL_errmsg?>
+        </div>
+        <?php
+        }
+		?>
+        <div class="table2">
+            <form name=registration action="register.php" method="POST">
+                <table width="90%" border="0" cellpadding="4" cellspacing=0>
+                    <?php
+                    if($SETTINGS['accounttype'] == 'sellerbuyer') {
+					?>
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b><?php print $MSG_25_0133; ?></b></td>
+                        <td width="60%">
+                            <input type=radio name=accounttype value='seller' <?if($_POST['accounttype'] == 'seller') print " checked=true";?> />
+                            <?=$MSG_25_0134?>
+                            <?php
+                            if($SETTINGS['sbsignupconfirmation'] == 's' || $SETTINGS['sbsignupconfirmation'] == 'sb') {
+                            	print "<P class=errfont>$MSG_25_0136</p>";
+                            }
+							?>
+                            <br>
+                            <input type=radio name=accounttype value='buyer' <?if($_POST['accounttype'] == 'buyer') print " checked=true";?> />
+                            <?=$MSG_25_0135?>
+                            <?php
+                            if($SETTINGS['sbsignupconfirmation'] == 'b' || $SETTINGS['sbsignupconfirmation'] == 'sb') {
+                            	print "<P class=errfont>$MSG_25_0136</p>";
+                            }
+							?>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+					?>
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?php print $MSG_002; ?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_name size=40 maxlength=255 value="<?=$_POST[TPL_name]?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?php print $MSG_003; ?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_nick size=20 maxlength=20  value="<?=$_POST[TPL_nick]?>" />
+                            <?php print $MSG_050; ?> </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_004;?> </b> </td>
+                        <td width="60%">
+                            <input type=password name=TPL_password size=20 maxlength=20 value="" />
+                            <?php print $MSG_050; ?> </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_005;?> </b> </td>
+                        <td width="60%">
+                            <input type=password name=TPL_repeat_password size=20 maxlength=20 value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%"  valign="top" align="right"><b> <?php print $MSG_006; ?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_email size=50 maxlength=50 value="<?=$_POST[TPL_email]?>" />
+					<?php
+						if(!empty($TPL_domains_alert)){
+							print "<br>".$TPL_domains_alert;
+						}
+					?>
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_252;?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_birthdate size=10 maxlength=10 value="<?=$_POST[TPL_birthdate]?>" />
+                            <?php
+                            if($SETTINGS[datesformat] == "USA") {
+                            	print $MSG_382;
+                            } else {
+                            	print $MSG_383;
+                            }
+  							?>
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_009;?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_address size=40 maxlength=255 value="<?=$_POST[TPL_address]?>" />
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_010;?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_city size=25 maxlength=25 value="<?=$_POST[TPL_city]?>" />
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_011;?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_prov size=10 maxlength=10 value="<?=$_POST[TPL_prov]?>" />
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_014;?> </b> </td>
+                        <td width="60%">
+                            <select name=TPL_country>
+                                <option value=""> <?php print $MSG_251; ?> </option>
+                                <?=$country?>
+                            </select>
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b> <?print $MSG_012;?> </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_zip size=8 value="<?=$_POST[TPL_zip]?>" />
+                        </td>
+                    </tr>
+					
+                    <tr>
+                        <td width="40%" valign="top" align="right"><b>
+                            <?=$MSG_013;?>
+                            </b> </td>
+                        <td width="60%">
+                            <input type=text name=TPL_phone size=40 maxlength=40 value="<?=$_POST[TPL_phone]?>" />
+                        </td>
+                    </tr>
+					<?php
+                    if($SETTINGS[userscreditcard] == 'y' && $HTTPS == 'on') {
+					?>
+                    <tr bgcolor="<?=$SETTINGS[headercolor]?>">
+                        <td width="40%" valign="top" align="left"><b>
+                            <?=$MSG_5272;?>
+                            </b> </td>
+                        <td width="60%">
+                            <?=$MSG_5273?>
+                            <br>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                <tr>
+                                    <td width="25%"><b>
+                                        <?=$MSG_5285?>
+                                        </b></td>
+                                    <td width="75%">
+                                        <input type=text name=TPL_cc size=16 maxlength=16 value="<?=$_POST[TPL_cc]?>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="25%"><b>
+                                        <?=$MSG_5286?>
+                                        </b></td>
+                                    <td width="75%">
+                                        <input type="text" name="TPL_exp_month" size="2" value="<?=$_POST[TPL_exp_month]?>" />
+                                        /
+                                        <input type="text" name="TPL_exp_year" size="2" value="<?=$_POST[TPL_exp_year]?>" />
+                                        <?=$MSG_5288?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="25%"><b>
+                                        <?=$MSG_5287?>
+                                        </b></td>
+                                    <td width="75%">
+                                        <input type="text" name="TPL_card_owner" value="<?=$_POST[TPL_card_owner]?>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="25%"><b>
+                                        <?=$MSG_5301?>
+                                        </b></td>
+                                    <td width="75%">
+                                        <input type="text" size=10 name="TPL_card_zip" value="<?=$_POST[TPL_card_zip]?>" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+					?>
+                    <?php
+                    if($SETTINGS[newsletter] == 1) {
+					?>
+                    <tr>
+                        <td width="40%" align=right><b><?print $MSG_608;?></b></td>
+                        <td width="60%">
+                            <input type="radio" name="TPL_nletter" value="1"<?php if($_POST[TPL_nletter] == 1 || empty($_POST[TPL_nletter])) print " checked=true";?> />
+                            <?=$MSG_030;?>
+                            <input type="radio" name="TPL_nletter" value="2"<?php if($_POST[TPL_nletter] == 2) print " checked=true";?> />
+                            <?=$MSG_029;?>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+					?>
+                    <?php
+                    if( $NEWSLETTER ) {
+					?>
+                    <tr>
+                        <td width="40%" valign="top" align="right"> <b><?print $MSG_526;?></b></td>
+                        <td width="60%">
+                            <input type="radio" name="TPL_nletter" value="1" />
+                            <?=$MSG_030?>
+                            <input type="radio" name="TPL_nletter" value="2" />
+                            <?=$MSG_029?>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+					?>
+                </table>
+                <div style="text-align:center">
+                    <?php
+                    if($SETTINGS[showacceptancetext] == 1) {
+					?>
+                    <p>
+                        <?=nl2br(stripslashes($SETTINGS[acceptancetext]))?>
+                    </p>
+                    <?php
+                    }
+					?>
+                    <input type=hidden name="action" value="first" />
+                    <input type="hidden" name="TPL_id_hidden" value="<?=$_POST[TPL_id_hidden]?>" />
+                    <input type="hidden" name="TPL_nick_hidden" value="<?=$_POST[TPL_nick_hidden]?>" />
+                    <input type="hidden" name="TPL_password_hidden" value="<?=$_POST[TPL_password_hidden]?>" />
+                    <input type="hidden" name="TPL_name_hidden" value="<?=$_POST[TPL_name_hidden]?>" />
+                    <input type="hidden" name="TPL_email_hidden" value="<?=$_POST[TPL_email_hidden]?>" />
+                    <input type=submit name="" value="<?=$MSG_235?>" class=button />
+                    <input type=reset name="" value="<?=$MSG_035?>" class=button />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+				<?php
+				if(($SETTINGS['accounttype'] == 'sellerbuyer' && $_SESSION["PHPAUCTION_LOGGED_ACCOUNT"] == 'seller') ||
+				   ($SETTINGS['accounttype'] == 'unique')) {
+				?>
+                <ul>
+						<li><a href="select_category.php"><?php print $MSG_028; ?></a></li>
+						<li><a href="selleremails.php"><?php print $MSG_25_0188 ?></a></li>
+						<li><a href="yourauctions_p.php"><?=$MSG_25_0115?></a></li>
+						<li><a href="yourauctions.php"><?=$MSG_203?></a></li>
+						<li><a href="yourauctions_c.php"><?=$MSG_204?></a></li>
+						<li><a href="yourauctions_s.php"><?=$MGS_2__0056?></a></li>
+						<li><a href="yourauctions_sold.php"><?=$MSG_25_0119?></a></li>
+						<li><a href="selling.php"><?php print $MSG_453; ?></a><br></li>
+						<li><a href="auction_watch.php"><?php print $MSG_471; ?></a></li>
+						<li><a href="item_watch.php"><?php print $MSG_472; ?></a></li>
+						<li><a href="buysellnofeedback.php"><?php print $MSG_25_0003; ?></a></li>
+						<li><a href="yourfeedback.php"><?php print $MSG_208 ?></a></li>
+                </ul>
+				<?php
+					} elseif($SETTINGS['accounttype'] == 'sellerbuyer' && $_SESSION["PHPAUCTION_LOGGED_ACCOUNT"] == 'buyer') {
+				?>
+				<form name=request action="<?=basename($_SERVER['SCRIPT_NAME'])?>" method=POST>
+                <p>
+					<?=$MSG_25_0140?> <input type=submit name=requesttoadmin value="<?=$MSG_25_0141?>"  class=button>
+                </p>
+				</form>
+				<?php
+					} elseif($SETTINGS['accounttype'] == 'sellerbuyer' && $_SESSION["PHPAUCTION_LOGGED_ACCOUNT"] == 'buyertoseller') {
+				?>
+                <p><?=$MSG_25_0143?></p>
+				<?php
+					}
+				?>

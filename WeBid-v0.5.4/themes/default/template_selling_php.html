@@ -1,0 +1,143 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_453;
+include phpa_include("template_user_menu_header.html");
+
+?>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="4">
+    <?php
+    if(is_array($AUCTIONS)) {
+	?>
+    <tr>
+        <th>
+            <?=$MSG_458;?>
+        </th>
+        <th>
+            <?=$MSG_455;?>
+        </th>
+        <th>
+            <?=$MSG_456;?>
+        </th>
+        <th>
+            <?=$MSG_457;?>
+        </th>
+        <th>
+            <?=$MSG_284;?>
+        </th>
+    </tr>
+    <?php
+			while(list($k,$v) = each($AUCTIONS)) {
+				if($FEE[$k] == 0) {
+	?>
+    <?php
+    $W = explode("|",$WINNERS[$k]);
+    $W_BID = explode("|",$WINNERS_BID[$k]);
+    $W_QTY = explode("|",$WINNERS_QTY[$k]);
+    $W_EMAIL = explode("|",$WINNERS_EMAIL[$k]);
+    $W_NICK = explode("|",$WINNERS_NICK[$k]);
+    $W_FDB = explode("|",$WINFDB[$k]);
+    $COUNTER = 1;
+    $i=0;
+    while($COUNTER < count($W)) {
+    	if(!($i++%2)) $BGCOLOR = ""; else $BGCOLOR = 'class="alt-row"';
+	?>
+    <tr valign="TOP" <?=$BGCOLOR?>>
+        <td style="white-space:nowrap">
+            <b><a href=item.php?id=<?=$k?> target=_blank>
+            <?=$v?>
+            </a></b> (ID: <a href=item.php?id=<?=$k?> target=_blank>
+            <?=$k?>
+            </a> -
+            <?=$MSG_25_0121." ".FormatDate($AUCTIONS_ENDS[$k])?>
+            ) </td>
+        <td width="33%">
+            <?=$W_NICK[$COUNTER]?>&nbsp;&nbsp;
+            <?=(!empty($W_FDB[$COUNTER])?"<A HREF=\"feedback.php?auction_id=$k&id=".$W_FDB[$COUNTER]."\">$MSG_207</A>":"")?>
+            <br>
+        </td>
+        <td width="33%"> <a href=mailto:<?=$W_EMAIL[$COUNTER]?>>
+            <?=$W_EMAIL[$COUNTER]?>
+            </a> </td>
+        <td width="17%" align=right> <a href=javascript:window_open('converter.php?AMOUNT=<?=$W_BID[$COUNTER]?>','incre',650,200,30,30)>
+            <?=print_money($W_BID[$COUNTER])?>
+            </a> </td>
+        <td width="17%" align=center>
+            <?php
+            if($W_QTY[$COUNTER] > 1) {
+            	print $W_QTY[$COUNTER];
+            } else {
+            	print "1";
+            }
+            $COUNTER++;
+            ?>
+        </td>
+    </tr>
+    <?php
+		}
+    } elseif($FEE[$k] == 1 || $FEE[$k] == 3) {
+	?>
+    <tr>
+        <td colspan="5">
+            <b><a href=item.php?id=<?=$k?> target=_blank>
+            <?=$v?>
+            </a></b> (ID: <a href=item.php?id=<?=$k?> target=_blank>
+            <?=$k?>
+            </a> -
+            <?=$MSG_25_0121." ".FormatDate($AUCTIONS_ENDS[$k])?>
+            )<?=$MSG_489?>
+            <br>
+            <?php
+            $W_BID = explode("|",$WINNERS_BID[$k]);
+            if($SETTINGS['sellerfinalfee'] == 1) {
+			?>
+            <?=$MSG_493?>&nbsp;<a href=javascript:window_open('converter.php?AMOUNT=<?=$FEE_AMOUNT[$k]?>','incre',650,200,30,30)>
+            <?=print_money($FEE_AMOUNT[$k])?>
+            </a>&nbsp;&nbsp;&nbsp; [<a href=pay_seller_fee.php?auction=<?=$k?>>
+            <?=$MSG_492?>
+            ]</a>
+            <?php
+            } else {
+            	print"&nbsp;";
+            }
+			?>
+        </td>
+    </tr>
+    <?php
+    } elseif($FEE[$k] == 2) {
+	?>
+    <tr>
+        <td colspan=5>
+            <b><a href=item.php?id=<?=$k?> target=_blank>
+            <?=$v?>
+            </a></b> (ID: <a href=item.php?id=<?=$k?> target=_blank>
+            <?=$k?>
+            </a> -
+            <?=$MSG_25_0121." ".FormatDate($AUCTIONS_ENDS[$k])?>
+            )<?=$MSG_489?>
+            <br>
+			<?=$MSG_491?>
+        </td>
+    </tr>
+    <?php
+	    }
+    }
+}
+?>
+</table>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

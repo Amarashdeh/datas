@@ -1,0 +1,284 @@
+<?php
+
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_619;
+include phpa_include("template_user_menu_header.html");
+?>
+<SCRIPT Language=Javascript>
+function ConfirmDel(){
+    if(confirm('<?=$MSG_30_0087?>')){
+        document.auctions.submit();
+    }else{
+        document.auctions.reset();
+    }
+}
+function selectAllStart(formObj, isInverse) 
+{
+   for (var i=0;i < formObj.length;i++) 
+   {
+      fldObj = formObj.elements[i];
+      if (fldObj.type == 'checkbox' && fldObj.name.substring(0,8)=='closenow')
+      { 
+         if(isInverse)
+            fldObj.checked = (fldObj.checked) ? false : true;
+         else fldObj.checked = true; 
+       }
+   }
+}
+function selectAllDelete(formObj, isInverse) 
+{
+   for (var i=0;i < formObj.length;i++) 
+   {
+      fldObj = formObj.elements[i];
+      if (fldObj.type == 'checkbox' && fldObj.name.substring(0,8)=='O_delete')
+      { 
+         if(isInverse)
+            fldObj.checked = (fldObj.checked) ? false : true;
+         else fldObj.checked = true; 
+       }
+   }
+}
+</SCRIPT>
+<form name="auctions" method="post" action="<?=basename($_SERVER[PHP_SELF])?>">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="CENTER">
+        <tr>
+            <td colspan="9" align=right>
+                <div>
+                    <dl class="phpa-tabs">
+                        <dd> <a href=yourauctions_p.php>
+                            <?=$MSG_25_0115?>
+                            </a> </dd>
+                        <dd> <a href=yourauctions_c.php>
+                            <?=$MSG_204?>
+                            </a> </dd>
+                        <dd> <a href=yourauctions_s.php>
+                            <?=$MGS_2__0056?>
+                            </a> </dd>
+                        <dd> <a href=yourauctions_sold.php>
+                            <?=$MSG_25_0119?>
+                            </a> </dd>
+                    </dl>
+                </div>
+            </td>
+        </tr>
+        </TABLE>
+    <table width="100%" border="0" cellspacing="1" cellpadding="4" align="CENTER">
+    <tr bgcolor="<?=$SETTINGS['tableheadercolor']?>">
+            <td class=titTable1 width="32%"> <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=title&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$MSG_624?>
+                </a>
+                <?php
+                if($_SESSION['oa_ord'] == 'title') {
+                      ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=title&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$_SESSION['oa_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="11%"> <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=starts&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$MSG_625?>
+                </a>
+                <?php
+                if($_SESSION['oa_ord'] == 'starts') {
+                ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=starts&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$_SESSION['oa_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="11%"> <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=ends&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$MSG_626?>
+                </a>
+                <?php
+                if($_SESSION['oa_ord'] == 'ends') {
+                      ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=ends&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$_SESSION['oa_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="9%" align=center>
+                <?=$MSG__0153?>
+            </td>
+            
+            <td class=titTable1 width="7%" align=center> <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=num_bids&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$MSG_627?>
+                </a>
+                <?php
+                if($_SESSION['oa_ord'] == 'num_bids') {
+                      ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=num_bids&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$_SESSION['oa_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="10%" align=center> <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=current_bid&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$MSG_628?>
+                </a>
+                <?php
+                if($_SESSION['oa_ord'] == 'current_bid') {
+                      ?>
+                <a href=<?=basename($_SERVER['PHP_SELF'])?>?oa_ord=current_bid&oa_type=<?=$_SESSION['oa_nexttype']?>>
+                <?=$_SESSION['oa_type_img']?>
+                </a>
+                <?php
+                }
+                ?>
+            </td>
+            <td class=titTable1 width="6%" align=center>
+                <?=$MSG_298?>
+            </td>
+            <td class=titTable1 width="8%" align=center>
+                <?=$MSG_008?>
+            </td>
+            <td class=titTable1 width="6%" align=center bgcolor="#FFFF00">
+                <?=$MGS_2__0048?>
+            </td>
+        </tr>
+        <?php
+        if(is_array($IDS)) {
+            while(list($k,$v) = each($IDS)) {
+                  ?>
+        <tr bgcolor="#EEEEEE">
+            <td width="32%"><a href="item.php?id=<?=$IDS[$k]?>">
+                <?=$TITLE[$k]?>
+                </a>
+				<br>
+				[<?=$MSG_30_0081.$COUNTER[$k].$MSG__0151;?>]</td>
+            <td width="11%">
+                <?=FormatDate($STARTS[$k])?>
+            </td>
+            <td width="11%">
+                <?=FormatDate($ENDS[$k])?>
+            </td>
+              <td width="9%"  align=CENTER><font color="#000000">
+                <?php
+                if($RELIST[$k] == 0) {
+                    print "--";
+                } else {
+                    print $RELIST[$k]." / ".$RELISTED[$k];
+                }
+                ?>
+            </td>
+            <td width="7%"  align=CENTER><font color="#000000">
+                <?=$BIDS[$k]?>
+            </td>
+            <td width="10%"  align=CENTER><font color="#000000">
+                <?php
+                if($BID[$k] == 0) {
+                    print "-";
+                } else {
+                    print print_money($BID[$k])."<BR>[$MSG_159 <A HREF=profile.php?user_id=".$BIDDERID[$k].">".$BIDDER[$k]."</a>]";
+                }
+                    ?>
+            </td>
+            <td width="6%"  align=CENTER>
+                <?php
+                if($BID[$k] == 0) {
+                    ?>
+                <a href="edit_active_auction.php?id=<?=$IDS[$k]?>"><img src="images/edititem.gif" width="13" height="17" alt="<?=$MSG_512?>" border="0"></a>
+                <?php
+                } else {
+                    print "&nbsp;";
+                }
+        ?>
+            </td>
+            <td width="8%"  align=CENTER>
+                <?php
+                if($BID[$k] == 0) {
+                    ?>
+                <input type="checkbox" name="O_delete[]" value="<?=$IDS[$k]?>" />
+                <?php
+                } else {
+                    print "&nbsp;";
+                }
+        ?>
+            </td>
+            <td width="6%"  align=CENTER bgcolor="#FFFFaa" class=white>
+                <input type="checkbox" name="closenow[]" value="<?=$IDS[$k]?>" />
+            </td>
+        </tr>
+        <?php
+            }
+        }
+        ?>
+        <tr bgcolor="<?=$BGCOLOR?>">
+		<TD colspan=7>&nbsp;</TD>
+          <td align=center><a href="javascript: void(0)" onclick="selectAllDelete(document.auctions,1)"><?=$MSG_30_0102?></A></td>
+          <td align=center><a href="javascript: void(0)" onclick="selectAllStart(document.auctions,1)"><?=$MSG_30_0102?></A></td>
+        </tr>
+        <tr>
+          <td colspan="9" align="center">
+            <input type="hidden" name="action" value="delopenauctions" />
+            <input type="submit" name="Submit" value="<?=$MSG_631?>" class=button onClick=ConfirmDel() />
+          </td>
+        </tr>
+    </table>
+</form>
+<table width=100% cellpadding=0 cellspacing=0 border=0>
+    <tr>
+        <td align=CENTER>
+            <?=$MSG_5117?>&nbsp;&nbsp;<?=$PAGE?>
+            <?=$MSG_5118?>&nbsp;&nbsp;<?=$PAGES?>
+            <br>
+            <?php
+            $PREV = intval($PAGE - 1);
+            $NEXT = intval($PAGE  + 1);
+            if($PAGES > 1) {
+                if($PAGE > 1) {
+                ?>
+            <a href="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$PREV?>"><u>
+            <?=$MSG_5119?>
+            </u></a> &nbsp;&nbsp;
+            <?php
+                }
+                $LOW = $PAGE - 5;
+                if($LOW <= 0) $LOW = 1;
+                $COUNTER = $LOW;
+                while($COUNTER <= $PAGES && $COUNTER < ($PAGE+6)) {
+                    if($PAGE == $COUNTER) {
+                        print "<B>$COUNTER</B>&nbsp;&nbsp;";
+                    } else {
+                        print "<A HREF=\"".basename($_SERVER[PHP_SELF])."?PAGE=$COUNTER\"><U>$COUNTER</U></a>&nbsp;&nbsp;";
+                    }
+                    $COUNTER++;
+                }
+            ?>
+            &nbsp;&nbsp;
+            <?php
+            if($PAGE < $PAGES) {
+                    ?>
+            <a href="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$NEXT?>"><u>
+            <?=$MSG_5120?>
+            </u></a>
+            <?php
+            }
+            }
+            ?>
+        </td>
+    </tr>
+</table>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

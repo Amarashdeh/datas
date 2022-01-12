@@ -1,0 +1,128 @@
+<style type="text/css">
+<!--
+.links {  font: 10pt Verdana, Arial, Helvetica, sans-serif; color: #000066; text-decoration: none}
+.active {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; font-weight: bold; color: #FFFFFF; text-decoration: none}
+.inactive { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; font-weight: bold; color: #3A607A; text-decoration: none }
+.nounderlined { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; font-weight: bold; color: #3A607A; text-decoration: none }
+.navigation { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; color: #000066;}
+.tabs { text-decoration: none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; color: #000066;}
+<?
+	$sty= "font-family:".$FONTS[$SETTINGS["std_font"]].";font-size:".$FONTSIZE[$SETTINGS["std_font_size"]].";color:".$SETTINGS["std_font_color"];
+	if($SETTINGS["std_font_bold"] == 'y') {
+		$sty .= "font-weight: bold;";
+	} if($SETTINGS["std_font_italic"] == 'y') {
+		$sty .= "font-style: italic;";
+	}
+	echo ".stdfont {".$sty."}\r\n";
+	$sty= "font-family:".$FONTS[$SETTINGS["nav_font"]].";font-size:".$FONTSIZE[$SETTINGS["nav_font_size"]].";color:".$SETTINGS["nav_font_color"].";";
+	if($SETTINGS["nav_font_bold"] == 'y') {
+		$sty .= "font-weight: bold;";
+	} if($SETTINGS["nav_font_italic"] == 'y') {
+		$sty .= "font-style: italic;";
+	}
+	echo ".navfont {".$sty."}\r\n";
+	$sty= "font-family:".$FONTS[$SETTINGS["footer_font"]].";font-size:".$FONTSIZE[$SETTINGS["footer_font_size"]].";color:".$SETTINGS["footer_font_color"].";";
+	if($SETTINGS["footer_font_bold"] == 'y') {
+		$sty .= "font-weight: bold;";
+	} if($SETTINGS["footer_font_italic"] == 'y') {
+		$sty .= "font-style: italic;";
+	}
+	echo ".footerfont {".$sty."}\r\n";
+	$sty= "font-family:".$FONTS[$SETTINGS["tlt_font"]].";font-size:".$FONTSIZE[$SETTINGS["tlt_font_size"]].";color:".$SETTINGS["tlt_font_color"].";";
+	if($SETTINGS["tlt_font_bold"] == 'y') {
+		$sty .= "font-weight: bold;";
+	} if($SETTINGS["tlt_font_italic"] == 'y') {
+		$sty .= "font-style: italic;";
+	}
+	echo ".tltfont {".$sty."}\r\n";
+	$sty= "font-family:".$FONTS[$SETTINGS["err_font"]].";font-size:".$FONTSIZE[$SETTINGS["err_font_size"]].";color:".$SETTINGS["err_font_color"].";";
+	if($SETTINGS["err_font_bold"] == 'y') {
+		$sty .= "font-weight: bold;";
+	} if($SETTINGS["err_font_italic"] == 'y') {
+		$sty .= "font-style: italic;";
+	}
+	echo ".errfont {".$sty."}\r\n";
+	$sty= "font-family:".$FONTS[$SETTINGS["sml_font"]].";font-size:".$FONTSIZE[$SETTINGS["sml_font_size"]].";color:".$SETTINGS["sml_font_color"].";";
+	if($SETTINGS["sml_font_bold"] == 'y') {
+		$sty .= "font-weight: bold;";
+	} if($SETTINGS["sml_font_italic"] == 'y') {
+		$sty .= "font-style: italic;";
+	}
+	echo ".smlfont {".$sty."}\r\n";
+	
+?>	
+
+body {
+	<?=(($SETTINGS['brepeat']!='no')? "background-image:url(".$prefix."uploaded/".$SETTINGS['background'].");background-repeat:".$SETTINGS['brepeat'].";":"background-color : #FFFFFF;")?>
+	<?="font-family:".$FONTS[$SETTINGS["std_font"]].";font-size:".$FONTSIZE[$SETTINGS["std_font_size"]].";color:".$SETTINGS["std_font_color"]?>;
+	margin : <?=(($SETTINGS['pagewidth']==100)?0:10)?>px;
+	text-align:left;
+}
+* {
+	<?="font-family:".$FONTS[$SETTINGS["std_font"]].";font-size:".$FONTSIZE[$SETTINGS["std_font_size"]].";color:".$SETTINGS["std_font_color"]?>;
+}
+
+a:link,a:visited {
+	color : <?=$SETTINGS['linkscolor']?>;
+}
+a:hover , a:active {
+	color : <?=$SETTINGS['vlinkscolor']?>;
+
+}
+#container {
+	background-color:<?=$SETTINGS['bordercolor']?>;
+	width : <?=$SETTINGS['pagewidth']?>%;
+	text-align : <?=$SETTINGS['alignment']?>;
+}
+.titTable1 {
+	background-color: <?=$SETTINGS['tableheadercolor']?>;
+}
+.tableContent {
+	border-color:<?=$SETTINGS['tableheadercolor']?>;
+}
+.titTable2 {
+	color: <?=$SETTINGS['tableheadercolor']?>;
+	border-bottom-color: <?=$SETTINGS['tableheadercolor']?>;
+}
+.titTable2a {
+	color: <?=$SETTINGS['tableheadercolor']?>;
+	border-bottom-color: <?=$SETTINGS['tableheadercolor']?>;
+}
+th {
+	background-color : <?=$SETTINGS['tableheadercolor']?>;
+}
+th a:link,th a:visited {
+	color: #FFFFFF;
+}
+th a:hover,th a:active {
+	color: <?=$SETTINGS['tableheadercolor']?>;
+	background-color : #FFFFFF;
+}
+.bar {
+	background-color : <?=$SETTINGS['headercolor']?>;
+}
+.bar td {
+	border-left:3px solid <?=$SETTINGS["nav_font_color"]?>;
+}
+.bar td a:link, .bar td a:visited {
+	font-family:<?=$FONTS[$SETTINGS["nav_font"]]?>;
+	font-size:<?=$FONTSIZE[$SETTINGS["nav_font_size"]]?>;
+	color : <?=$SETTINGS["nav_font_color"]?>;
+}
+.bar td a:hover , .bar td a:active {
+	color : #12C2DE;
+	background-color: #ffffff;
+}
+.bar a:link, .bar a:visited {
+	color : <?=$SETTINGS["nav_font_color"]?>;
+}
+.bar a:hover , .bar a:active {
+	color : #12C2DE;
+	background-color: #ffffff;
+}
+#barSec {
+	background-color : <?=$SETTINGS['tableheadercolor']?>;
+}
+
+-->
+</style>

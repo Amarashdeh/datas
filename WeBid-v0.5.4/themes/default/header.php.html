@@ -1,0 +1,235 @@
+<?php header( 'Content-type: text/html; charset='.$CHARSET ); ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"
+<?php
+#// Set document direction (set in includes/messages.XX.inc.php)
+#// Can be right-to-left (rtl) or left-to-roght (ltr)
+if($DOCDIR != 'rtl') {
+  print " dir=ltr>";
+} else {
+  print " dir=rtl>";
+}
+
+#// Build the page width string
+$PAGEWIDTH = $SETTINGS['pagewidth'];
+if($SETTINGS['pagewidthtype'] == 'perc') $PAGEWIDTH .= "%";
+if ($HTTPS == '1' || $HTTPS == 'on') {
+  $SITEURL = $Https['httpsurl'];
+  $SETTINGS['siteurl'] = $Https['httpsurl'];
+} else {
+  $SITEURL = $SETTINGS['siteurl'];
+  $SETTINGS['siteurl'] = $SETTINGS['siteurl'];
+}
+
+?>
+<head>
+<title><?php print $SETTINGS['sitename']." ".$page_title;?></title>
+<?php
+    include $include_path."styles.inc.php";
+    if ($editOn) {
+        echo "<script type='text/javascript'>\n";
+        echo "// <![CDATA[\n";
+        echo "var thepage = '$thepage'\n";
+        echo "var thestyle = '$thestyle'\n";
+        echo "// ]]>\n";
+        echo "</script>\n";
+        echo "<script src='js/utils.js' type='text/javascript'></script>\n";
+        echo "<script src='js/appl.js' type='text/javascript'></script>\n";
+    }
+    if (file_exists("themes/".$SETTINGS['theme']."/style.css")) {
+        print "<link rel='stylesheet' type='text/css' href='".phpa_include("style.css")."'>";
+    }else{
+        print "<link rel='stylesheet' type='text/css' href='".phpa_include_webstores("style.css")."'>";
+    }
+?>
+<script type="text/javascript" language="Javascript">
+
+function window_open(pagina,titulo,ancho,largo,x,y){
+  var Ventana= 'toolbar=0,location=0,directories=0,scrollbars=1,screenX='+x+',screenY='+y+',status=0,menubar=0,resizable=0,width='+ancho+',height='+largo;
+  open(pagina,titulo,Ventana);
+}
+
+var currenttime = '<?php print ActualDate(); ?>';
+var serverdate=new Date(currenttime);
+
+function padlength(what){
+	var output=(what.toString().length==1)? "0"+what : what;
+	return output;
+}
+
+function displaytime(){
+	serverdate.setSeconds(serverdate.getSeconds()+1)
+	var timestring=padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds());
+	document.getElementById("servertime").innerHTML=timestring;
+}
+
+window.onload=function(){
+	setInterval("displaytime()", 1000);
+}
+
+</script>
+<?php if(basename($_SERVER['PHP_SELF']) == 'sell.php' || basename($_SERVER['PHP_SELF']) == 'selltemplate.php' || basename($_SERVER['PHP_SELF']) == 'wanteditem.php') { ?>
+<script language="Javascript" type="text/javascript" src="includes/calendar.js"></script>
+<script type="text/javascript" src="./fck/fckeditor.js"></script>
+<?php } 
+
+#// Handle Meta Tags
+if($SETTINGS['descriptiontag'] != '') {
+  print " <META name=\"description\" content=\"".stripslashes($SETTINGS['descriptiontag'])."\">";
+}
+if($SETTINGS['keywordstag'] != '') {
+  print " <META name=\"keywords\" content=\"".stripslashes($SETTINGS['keywordstag'])."\">";
+}
+?>
+</head>
+<body>
+<table width="<?=$PAGEWIDTH?>" cellpadding="0" cellspacing="0" border="0" class="container" > 
+  <tr> 
+  <td>
+    <table width="100%" border="0" cellpadding="5" cellspacing="5" class="logo">
+    <tbody>
+      <tr>
+        <td width="50%">
+          <?php
+          if($SETTINGS['logo']) {
+          ?>
+            <a href="<?=$SETTINGS['siteurl']?>index.php?"><img src="<?=$SETTINGS['siteurl'].phpa_uploaded(false).$SETTINGS['logo'];?>" border="0" alt="<?=$SETTINGS['sitename']?>"></a> 
+            <?php
+          } else {
+              print "&nbsp;";
+          }
+          ?>
+        </td><td width="50%">
+          <?php
+          if($SETTINGS['banners'] == 1) {
+              view();
+          } else {
+              print "&nbsp;";
+          }
+          ?>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" colspan="2">
+          <?php
+            if(function_exists('viewgoogleads')){
+              if(viewgoogleads() == "header") {
+          ?>
+          <table width="100%" border="0" cellpadding="5" cellspacing="0">
+            <tr>
+              <td width="100%" align="center">
+              <?php
+                showgoogleads();
+              ?>
+              </td>
+            </tr>
+          </table>
+          <?php
+          }}
+          ?>
+        </td>      
+      </tr>
+    </tbody>
+    </table>
+    <table width="100%" border="0" cellpadding="0" cellspacing="5" class="counters">
+      <tr>
+        <td align="right">
+          <?php              
+          //-- Get users and auctions counters
+          $COUNTERSTOSHOW = @mysql_fetch_array(@mysql_query("SELECT * FROM ".$DBPrefix."counterstoshow"));
+          $query = "select * from ".$DBPrefix."counters";
+          $result_counters = mysql_query($query);
+          $counters="";
+          if($result_counters) {
+            if($COUNTERSTOSHOW['auctions'] == 'y') $counters .= "<B>".mysql_result($result_counters,0,"auctions")."</B>&nbsp;".strtoupper($MSG_232);
+            if($COUNTERSTOSHOW['users'] == 'y') $counters .= "|&nbsp;<B>".mysql_result($result_counters,0,"users")."</B>&nbsp;".strtoupper($MSG_231);
+            print $counters;
+            if($COUNTERSTOSHOW['online'] == 'y') include $prefix."online.php";
+          }
+          //-- Display current Date/Time
+          $date = date('M j, Y');
+          print '|&nbsp;'.$date.' <span id="servertime"></span>';
+        ?>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellpadding="0" cellspacing="3" class="navbar">
+      <tr>
+        <td>
+          <table cellspacing="0" class="table-bar">
+          <tbody>
+            <tr>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>index.php?"><?php print $MSG_166; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+                <?php
+                if(($SETTINGS['uniqueseller']>0 && $_SESSION["PHPAUCTION_LOGGED_IN"]==$SETTINGS['uniqueseller']) || $SETTINGS['uniqueseller']==0){
+                ?>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>select_category.php?"> <?php print $MSG_028; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+                <?php
+                }
+                if($_SESSION["PHPAUCTION_LOGGED_IN"]) {
+                /* user is logged in, give link to edit data or log out */
+                ?>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>user_menu.php?"><?php print $MSG_622; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>logout.php?"><?php print $MSG_245; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+                <?php
+                } else {
+                /* user not logged in, give link to register or login */
+                ?>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>register.php?"><?php print $MSG_235; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>user_login.php?"><?php print $MSG_052; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+                <?php
+                }
+                if($SETTINGS['boards'] == 'y' && $SETTINGS['boardslink'] == 'y' && ($SETTINGS['phpbbforums'] == "n" || !$SETTINGS['phpbbforums'])) {
+                ?>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>boards.php"><?php print $MSG_5030; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+                <?php
+                }
+                if($SETTINGS['boards'] == 'y' && $SETTINGS['boardslink'] == 'y' && $SETTINGS['phpbbforums'] == "y") {
+                ?>
+              <td>
+                <a href="<?=$SETTINGS['siteurl']?>forums"><?php print $MSG_5030; ?></a><div class="imgSep"><img src="<?=$SETTINGS['siteurl']?>images/transparent.gif" width="10" height="10" alt="spacer"></div></td>
+                <?php
+                }
+				?>
+              <td>
+                <a href="javascript: window_open('<?=$SETTINGS['siteurl']?>faqs.php','faqs',500,400,20,20)"> <?php print $MSG_148; ?></a></td>
+            </tr>
+          </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table border="0" class="barSec" style="height:37; width:100%;">
+      <tr>
+        <td width="50%">
+          <form name="search" action="<?=$SETTINGS['siteurl']?>search.php" method="GET">
+          <div class="barSearch">
+          <input type="hidden" name="">
+          <?=$MSG_103?>
+          <input type="text" name="q" size=15 value="<?=htmlspecialchars($q);?>">
+          <input type="submit" name="" value="<?php print $MSG_275;?>" class="button">
+          &nbsp;&nbsp;<a href="<?=$SETTINGS['siteurl']?>adsearch.php"> <?=$MSG_464 ?> </a> 
+          </div>
+          </form>
+        </td>
+        <td width="50%" align="right">
+          <form name="gobrowse" action="<?=$SETTINGS['siteurl']?>browse.php" method="GET">
+          <div class="barBrowse">
+          <?php
+          print $MSG_104;
+          include $main_path."language/".$language."/categories_select_box.inc.php";
+          ?>
+          <input type="submit" name="sub" value="<?php print $MSG_275;?>" class="button">
+          </div>
+          </form>
+        </td>
+      </tr>
+    </table>

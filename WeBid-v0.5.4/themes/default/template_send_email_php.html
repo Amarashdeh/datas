@@ -1,0 +1,84 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<SCRIPT Language=Javascript>
+function SubmitFriendForm(){
+	document.friend.submit();
+}
+function ResetFriendForm(){
+	document.friend.reset();
+}
+</SCRIPT>
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $MSG_645; ?>
+        </div>
+<div class="titTable3">
+<A HREF="item.php?id=<?php print $TPL_auction_id; ?>"><?php print $MSG_138; ?></A>
+</DIV>
+<TABLE WIDTH="100%" >
+  <TR>
+    <TD>
+      <FORM NAME="sendemail" ACTION="send_email.php" METHOD=POST>
+        <TABLE WIDTH="90%" border="0" cellpadding="4" cellspacing="0" class="content">
+          <!-- error message here -->
+          <TR> 
+            <TD colspan="2" class=errfont><?php print $TPL_error_text; ?> <?php print $MSG; ?> 
+            </TD>
+          </TR>
+          <!-- seller's nick -->
+          <TR> 
+            <TD width="40%" ALIGN=right> <B><?php print $MSG_125; ?></B> 
+            </TD>
+            <TD width="60%"><INPUT TYPE="HIDDEN" NAME="seller_nick" SIZE="25" VALUE="<?php print $TPL_seller_nick_value; ?>"> 
+              <?php print $TPL_seller_nick_value; ?> </TD>
+          </TR>
+          <!-- seller's email -->
+          <TR> 
+            <TD ALIGN=right> <B><?php print $MSG_017; ?></B> 
+            </TD>
+            <TD><INPUT TYPE="HIDDEN" NAME="item_title" SIZE="25" VALUE="<?php print $TPL_item_title; ?>"> 
+              <?php print $TPL_item_title; ?> </TD>
+          </TR>
+          <!-- your email -->
+          <TR> 
+            <TD ALIGN=right> <B><?php print $MSG_002; ?></B> 
+            </TD>
+            <TD ><INPUT TYPE="TEXT" NAME="sender_name" SIZE="25" VALUE="<?=$_SESSION[PHPAUCTION_LOGGED_NAME] ?>"> 
+            </TD>
+          </TR>
+          <!-- your name -->
+          <TR> 
+            <TD ALIGN=right> <B><?php print $MSG_143; ?></B> 
+            </TD>
+            <TD ><INPUT TYPE="hidden" NAME="sender_email" SIZE="25" VALUE="<?=$_SESSION[PHPAUCTION_LOGGED_EMAIL] ?>"> 
+            </TD>
+          </TR>
+          <!-- comment -->
+          <TR> 
+            <TD ALIGN=right VALIGN=TOP> <B><?php print $MSG_650; ?></B> 
+            </TD>
+            <TD ><TEXTAREA NAME="sender_question" COLS="23" ROWS="6"><?php print $TPL_sender_question; ?></TEXTAREA> 
+              <BR> <BR> <INPUT TYPE="hidden" NAME="seller_email" VALUE="<?php print $TPL_seller_email_value; ?>"> 
+              <INPUT TYPE="hidden" NAME="id" VALUE="<?php print $TPL_auction_id; ?>"> 
+              <INPUT TYPE="hidden" NAME="action" VALUE="<?=$MSG_106;?>"> <INPUT TYPE=submit NAME="" VALUE="<?=$MSG_5201?>"  class=button /> 
+              <INPUT TYPE=reset NAME="" VALUE="<?=$MSG_035?>" class=button> <p> </TD>
+          </TR>
+        </TABLE>
+      </FORM></TD>
+  </TR>
+</TABLE>
+</div>
+</div>

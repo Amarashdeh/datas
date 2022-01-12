@@ -1,0 +1,35 @@
+<script language="JavaScript" type="text/JavaScript">
+function validate(f) {
+	if(f.to.value=="") {
+		return false;
+	}
+	if(f.subject.value=="") {
+		return false;
+	}
+	if(f.message.value=="") {
+		return false;
+	}
+	return true;
+}
+</script>
+	<center>
+	<?=$TPL_error?><br>
+	<form name="form1" id="form1" method="post" action="includes/message.php" onsubmit="return validate(this);">
+	<table width="75%" border="1" style="border-collapse: collapse">
+	  <tr>
+		<td width="23%"><label for="to">To:</label></td>
+		<td width="77%"><input name="sendto" type="text" size="40" value="<?=$TPL_sendto?>" id="to" /></td>
+	  </tr>
+	  <tr>
+		<td><label for="subject">Subject:</label></td>
+		<td><input name="subject" type="text" size="40" value="<?=$TPL_subject?>" id="subject" /></td>
+	  </tr>
+	  <tr>
+		<td><label for="message">Message:</label></td>
+		<td><textarea name="message" cols="70" rows="5" id="message"><?=$TPL_message_cont?></textarea></td>
+	  </tr>
+	</table>
+	<input name="submit" type="submit" value="submit" />
+	</form>
+	</center>
+<br>

@@ -1,0 +1,116 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_454;
+include phpa_include("template_user_menu_header.html");
+?>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="4">
+    <?php
+    if(is_array($AUCTIONS)) {
+    	foreach($AUCTIONS as $k=>$v) {
+	?>
+    <tr valign="TOP" >
+        <td colspan="4">
+            <?=$MSG_458?>
+            <b><a href=item.php?id=<?=$k?> target=_blank>
+            <?=$v?>
+            </a></b> (ID: <a href=item.php?id=<?=$k?> target=_blank>
+            <?=$k?>
+            </a> -
+            <?=$MSG_25_0121." ".FormatDate($AUCTIONS_ENDS[$k])?>
+            ) </td>
+    </tr>
+    <?php
+    if($FEE[$k] == 0) {
+	?>
+    <tr>
+        <th width="30%">
+            <?=$MSG_125?>
+        </th>
+        <th width="20%">
+            <?=$MSG_460?>
+        </th>
+        <th width="15%">
+            <?=$MSG_461?>
+        </th>
+        <th width="15%">
+            <?=$MSG_284?>
+        </th>
+    </tr>
+    <tr valign=top>
+        <td width="30%" >
+            <?=$SELLER_NICK[$k]?>
+&nbsp;&nbsp;
+            <?=(!empty($SELL_FDB[$k])?"<A HREF=\"feedback.php?auction_id=$k&id=".$SELL_FDB[$k]."\">$MSG_207</A>":"")?>
+        </td>
+        <td width="20%" >
+            <a href=mailto:<?=$SELLER_EMAIL[$k]?>>
+            <?=$SELLER_EMAIL[$k]?>
+            </a> </td>
+        <td width="15%" align=right>
+            <a href=javascript:window_open('converter.php?AMOUNT=<?=$BID[$k]?>','incre',650,200,30,30)>
+            <?=print_money($BID[$k])?>
+            </a> </td>
+        <td width="15%" align=center>
+            <?php
+            if($QTY[$k] > 0) {
+            	print $QTY[$k];
+            } else {
+            	print "1";
+            }
+			?>
+        </td>
+    </tr>
+    <?php
+    } elseif($FEE[$k] == 1 || $FEE[$k] == 2) {
+	?>
+    <tr>
+        <td colspan=4>
+            <?=$MSG_489?>
+            <br>
+            <?php
+            if($SETTINGS[buyerfinalfee] == 1) {
+            ?>
+            <?=$MSG_493?>&nbsp;
+            <?=print_money($FEE_AMOUNT[$k])?>&nbsp;&nbsp;&nbsp; [<a href=pay_buyer_fee.php?auction=<?=$k?>>
+            <?=$MSG_492?>
+            </a> ]
+            <?php
+            } else {
+            	print"&nbsp;";
+            }
+			?>
+        </td>
+    </tr>
+    <?php
+    } elseif($FEE[$k] == 3) {
+	?>
+    <tr>
+        <td colspan=4>
+            <?=$MSG_490?>
+        </td>
+    </tr>
+    <?php
+    }
+	?>
+    <?php
+    	}
+    }
+	?>
+</table>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

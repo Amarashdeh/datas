@@ -1,0 +1,91 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $MSG_207; ?>
+        </div>
+        <?if(!empty($TPL_errmsg)) {?>
+        <div class=errfont>
+            <?=$TPL_errmsg ?>
+        </div>
+        <?}?>
+       <!-- <div>
+            <dl class="phpa-tabs">
+                <dd><a href="item.php?id=<?php echo $_REQUEST['auction_id']; ?>">
+                    <?=$MSG_138; ?>
+                    </a></dd>
+                <dd><a href="profile.php?user_id=<?php echo $_GET['id']; ?>">
+                    <?=$MSG_505; ?>
+                    </a></dd>
+            </dl>
+        </div>
+        -->
+        <div class="table2">
+            <form name=addfeedback action="feedback.php?id=<?php echo $_GET['id']; ?>" method="POST">
+                <table width="100%" border="0" cellpadding="4" cellspacing="0" >
+                    <tr>
+                        <td colspan=2><?=$TPL_nick." ($TPL_feedbacks_sum)"?><br>
+                            <?=$TPL_rate_ratio_value?>
+                            <br>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" align=RIGHT><b><?php print $MSG_187; ?>:</b> </td>
+                        <td>
+                            <input type="hidden" name="TPL_rater_nick" value="<?=$TPL_rater_nick;?>" />
+                            <?=$TPL_rater_nick;?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=RIGHT><b><?php print $MSG_188; ?>:</b> </td>
+                        <td>
+                            <input type="password" name="TPL_password" size="20" maxlength="20" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=RIGHT><b><?php print $MSG_503; ?>:</b> </td>
+                        <td>
+                            <input type="radio" name="TPL_rate" value="1" <?if(empty($_POST['TPL_rate'])) print " CHECKED";?>/>
+                            <img src="./images/positive.gif" width=24 height=24 border=0 alt="+1" /> 
+                            <input type="radio" name="TPL_rate" value="0" />
+                            <img src="./images/neutral.gif" width=24 height=24 border=0 alt="0" />
+                            <input type="radio" name="TPL_rate" value="-1" />
+                            <img src="./images/negative.gif" width=24 height=24 border=0 alt="-1" />
+                    </tr>
+                    <tr>
+                        <td align=RIGHT valign="top"><b>Comment:</b> </td>
+                        <td>
+                            <textarea name="TPL_feedback" rows="10" cols="50"><?php echo $TPL_feedback; ?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="pg" value="<?php echo $pg; ?>" />
+                        </td>
+                        <td><br>
+                            <input type="submit" name="" value="<?=$MSG_530?>" class=button />
+                            <input type="reset" name="" class=button />
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="TPL_nick_hidden" value="<?php echo $TPL_nick; ?>" />
+                <input type="hidden" name="auction_id" value="<?php echo $_REQUEST['auction_id']; ?>" />
+            </form>
+        </div>
+    </div>
+</div>

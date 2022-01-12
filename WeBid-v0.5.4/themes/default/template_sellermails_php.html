@@ -1,0 +1,77 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_25_0188;
+include phpa_include("template_user_menu_header.html");
+?>
+
+<form action="<?=basename($_SERVER['PHP_SELF'])?>" method="post" name="thisform" id="thisform">
+        <table width="100%" cellspacing="0" cellpadding="4" border="0" >
+            <tr>
+                <td width="93%">
+                    <?=$MSG_25_0195?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="startemailmod" value="yes" <?if($EMAILMODE['startemailmode'] == 'yes') print " CHECKED";?> />
+                    <?=$MSG_25_0196?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="startemailmod" value="no"  <?if($EMAILMODE['startemailmode'] == 'no') print " CHECKED";?> />
+                    <?=$MSG_25_0197?>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="93%">
+                    <?=$MSG_25_0189?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="endemailmod" value="one" <?if($EMAILMODE['endemailmode'] == 'one') print " CHECKED";?> />
+                    <?=$MSG_25_0190?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="endemailmod" value="cum"  <?if($EMAILMODE['endemailmode'] == 'cum') print " CHECKED";?> />
+                    <?=$MSG_25_0191?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="endemailmod" value="none"  <?if($EMAILMODE['endemailmode'] == 'none') print " CHECKED";?> />
+                    <?=$MSG_25_0193?>
+                </td>
+            </tr>
+            <tr>
+                <td align=CENTER>
+                    <input type=hidden name=action value=update />
+                    <input type="submit" name="Submit" value="<?=$MSG_2_0015?>" class=button />
+                    <br>
+                    <br>
+                </td>
+            </tr>
+        </table>
+</form>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

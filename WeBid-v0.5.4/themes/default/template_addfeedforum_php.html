@@ -1,0 +1,93 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_222;
+include phpa_include("template_user_menu_header.html");
+?>
+
+<div>
+    <dl class="phpa-tabs">
+        <dd><a href="feedback.php?id=<?=$arrfeed['rated_user_id']?>&faction=show"><?php print $MSG_230; ?></a></dd>
+    </dl>
+</div>
+<form name=addfeedforum action="addfeedforum.php" method="POST">
+    <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td colspan="2">
+                <table width="100%" cellspacing="1" cellpadding="1">
+                    <tr bgcolor="#EEEEEE">
+                        <td valign="top"> <img src="<?=$feed_disp['img']?>" align="middle" alt="" /><b><a href="<?=$feed_disp['usflink']?>">
+                            <?=$feed_disp['username']?>
+                            (
+                            <?=$feed_disp['usfeed']?>
+                            )</a></b>&nbsp;
+                            <?=$feed_disp['usicon']?>
+                            <?="(".$MSG_506.$feed_disp['feedbackdate']." ".$MSG_25_0177." ".$feed_disp['auctionurl'].")"?>
+                            <br>
+                            <br>
+                            <?=$feed_disp['feedback']?>
+                        </td>
+                        <td>
+                            <?php
+                            if(is_array($feed_disp['feedforum'])) {
+							?>
+                            <table width="100%" cellspacing="1" cellpadding="1">
+                                <?php
+                                foreach($feed_disp['feedforum'] as $kf=>$feed_dispf) {
+								?>
+                                <tr bgcolor="<?=(($kf%2) ? "#FFFFFF" : "#EEEEEE")?>">
+                                    <td width="25%">
+                                        <?=$feed_dispf['username'].$MSG_25_0203.$feed_dispf["commentdate"].$MSG_25_0202?>
+                                    </td>
+                                    <td width="75%">
+                                        <?=$feed_dispf['comment']?>
+                                    </td>
+                                </tr>
+                                <?php
+                                }
+								?>
+                            </table>
+                            <?php
+                            }
+							?>
+                            <br>
+                            <?=$feed_disp['nextfeedforum']?>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td width="30%" align=RIGHT valign="top"><b>
+                <?=$MSG_25_0201?>
+                </b><br>
+                <?="(".$MSG_5220.")" ?>
+            </td>
+            <td>
+                <textarea name="comment" rows="6" cols="50"><?php echo $comment; ?></textarea>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align:center">
+        <input type="hidden" name="seqnum" value="<?=$seqnum+1;?>" />
+        <input type="hidden" name="feed_id" value="<?=$feed_id?>" />
+        <input type="submit" name="" value="<?=$MSG_530?>" class=button />
+&nbsp;&nbsp;&nbsp;
+        <input type="reset" name="" />
+    </div>
+</form>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

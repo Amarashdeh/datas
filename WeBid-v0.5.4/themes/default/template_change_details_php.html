@@ -1,0 +1,147 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+
+?>
+<?php
+$TMP_usmenutitle=$MSG_509;
+include phpa_include("template_user_menu_header.html");
+
+$OPTIONAL_TEXT = " (".$MSG_30_0090.")";
+?>
+
+<form name=details action="<?=basename($_SERVER[PHP_SELF])?>" method="POST">
+    <table width="100%" border="0" cellpadding="4" align="center">
+        <?php
+          if($TMP_MSG){
+        ?>
+        <tr>
+            <td valign="top" align="center" colspan=3 class=errfont><?php print $TMP_MSG ?></td>
+        </tr>
+        <?php
+        }
+        ?>
+        <tr>
+            <td  align="right" ><b><?php print $MSG_002; ?> </b></td>
+            <td  ><h3><?php print $TPL_name ?></h3>
+                <input type=HIDDEN name=TPL_name value=<?=$TPL_name?> />
+            </td>
+        </tr>
+        <tr>
+            <td width="30%" align="right"  valign="top" ><b><?php print $MSG_003; ?> </b> </td>
+            <td width="70%"  valign="top"> <b> <?php print $TPL_nick; ?></b>
+                <input type=HIDDEN name=TPL_nick value=<?=$TPL_nick?> />
+                <b><?php echo $TPL_num_feedback; ?></b>
+                <?php if(!$TPL_rate) $TPL_rate=0; ?>
+                <img src="./images/estrella_<?php echo $TPL_rate; ?>.gif" align="top" alt="<?=$TPL_rate?>" /></td>
+        </tr>
+        <tr>
+            <th colspan="2" valign="top" align="center"><?php print $MSG_617; ?> </td>
+        </tr>
+        <tr>
+            <td valign="top" align="right" class=errfont><?php print $MSG_004 ?></td>
+            <td align="left"><input type=password name=TPL_password size=20 maxlengtd=20 /><?php print $MSG_050; ?> </td>
+        </tr>
+        <tr>
+            <td valign="top" align="right" class=errfont><?php print $MSG_005 ?></td>
+            <td align="left">
+                <input type=password name=TPL_repeat_password size=20 maxlengtd=20 />
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" align="right"><b> <?php print $MSG_006; ?> </b> </td>
+            <td >
+                <input type=text name=TPL_email size=50 maxlength=50 value="<?php echo $TPL_email; ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td  valign="top" align="right"> <b><?=$MSG_252;?></b> </td>
+            <td >
+                <input type=text name=TPL_birthdate size=10 maxlength=10 value="<?php echo $TPL_birthdate; ?>" />
+                <?php
+                if($SETTINGS[datesformat] == "USA") {
+                	print $MSG_382;
+                } else {
+                	print $MSG_383;
+                }
+				?>
+            </td>
+        </tr>
+        <tr>
+            <td  valign="top" align="right"><b> <?php print $MSG_009; ?> </b> </td>
+            <td >
+                <input type=text name=TPL_address size=40 maxlength=255 value="<?php echo $TPL_address; ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td  valign="top" align="right"><b> <?php print $MSG_010; ?> </b> </td>
+            <td >
+                <input type=text name=TPL_city size=25 maxlength=25 value="<?php echo $TPL_city; ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td  valign="top" align="right"><b> <?php print $MSG_011; ?> </b> </td>
+            <td >
+                <input type=text name=TPL_prov size=10 maxlength=10 value="<?php echo $TPL_prov; ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td  valign="top" align="right"><b> <?php print $MSG_014; ?> </b> </td>
+            <td >
+                <select name=TPL_country>
+                    <?php  echo $country; ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td  valign="top" align="right"><b> <?php print $MSG_012; ?> </b> </td>
+            <td >
+                <input type=text name=TPL_zip size=8 value="<?php echo $TPL_zip; ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td  valign="top" align="right"><b> <?php print $MSG_013; ?> </b> </td>
+            <td >
+                <input type=text name=TPL_phone size=40 maxlength=40 value="<?php echo $TPL_phone; ?>" />
+            </td>
+        </tr>
+        <tr>
+            <?php
+            if($SETTINGS[newsletter] == 1)        {
+			?>
+            <td  align="right" height="2">
+                <p><b><i><?php print $MSG_603; ?></i></b><br>
+                </p>
+            <td>
+                <input type="radio" name="TPL_nletter" value="1" <?php if($TPL_nletter == 1 ) print " CHECKED=true";?> />
+                <?php print $MSG_030; ?>
+                <input type="radio" name="TPL_nletter" value="2" <?php if($TPL_nletter == 2 ) print " CHECKED=true";?> />
+                <?php print $MSG_029;?> &nbsp
+                <b><?php  print $MSG_609; ?></b>
+            </td>
+        </tr>
+        	<?php
+            }
+	 		?>
+        <tr>
+            <td colspan=2 align=center>
+                <input type="submit" name="Input" value="<?=$MSG_530?>" class=button />
+                <input type=reset name="Input" class=button />
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="action" value="update" />
+</form>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

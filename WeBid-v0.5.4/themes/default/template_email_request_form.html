@@ -1,0 +1,82 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $MSG_334." $username"; ?>
+        </div>
+        <?if(!empty($TPL_error_text)) {?>
+        <div class=errfont>
+            <?=$TPL_error_text ?>
+        </div>
+        <?}?>
+        <div class="titTable3">
+			<a href="profile.php?user_id=<?php print $user_id; ?>"><?print $MSG_206;?></a> | 
+			<a href="item.php?id=<?php print $auction_id; ?>"><?print $MSG_138;?></a>
+        </div>
+        <div class="table2">
+            <form name="seller" action="email_request.php" method="POST">
+                <table width=90% cellpadding="4" cellspacing="0">
+                    <tr>
+                        <td><?php print $MSG_149; ?>
+                        </td>
+                    </tr>
+                </table>
+                <table width="90%" align="center" cellpadding="4" cellspacing="0">
+                    <tr>
+                        <td align=right valign=top width="40%">
+                                <?php print $MSG_002; ?>
+                        </td>
+                        <td width="60%">
+                            <input type="TEXT" name="TPL_sender_name" size="25" value="<?php print $TPL_sender_name; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=right valign=top width="40%">
+                                <?php print $MSG_006; ?>
+                        </td>
+                        <td width="60%">
+                            <input type="TEXT" name="TPL_sender_mail" size="25" value="<?php print $TPL_sender_mail; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=right valign=top width="40%">
+                                <?php print $MSG_332; ?>
+                        </td>
+                        <td width="60%">
+                            <input type="TEXT" name="TPL_subject" size="25" value="<?php print $TPL_subject; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=right valign=top width="40%">
+                                <?php print $MSG_333; ?>
+                        </td>
+                        <td valign=top width="60%">
+                            <textarea name="TPL_text" cols="30" rows="8"><?php print $TPL_text; ?></textarea>
+                            <br>
+                            <br>
+                            <input type="hidden" name="user_id" value="<?php print $user_id; ?>" />
+                            <input type="hidden" name="username" value="<?php print $username; ?>" />
+                            <input type="hidden" name="action" value="proceed" />
+                            <input type="submit" name="Submit" value="Submit" class=button />
+                            <input type="reset" name="Submit2" value="Reset" class=button />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

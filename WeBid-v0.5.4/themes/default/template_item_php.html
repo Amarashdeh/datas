@@ -1,0 +1,462 @@
+<?php
+$NOW = date("YmdHis",mktime(date("H")+$SETTINGS['timecorrection'],date("i"),date("s"),date("m"), date("d"),date("Y")));
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+
+?>
+<div class="content">
+    <div class="tableContent2">
+     <br><b><?php print $MSG_041 ?>:</b> <?php print $TPL_cat_value ?><br><br>
+     <div class="titTable2">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+        	<td><?php print $TPL_title_value ?></td>
+        	<td align="right"><?php print $MSG_113 ?>: <?php print $TPL_id_value ?></td>
+        </tr>
+      </table>
+      <?php
+        if($_SESSION["PHPAUCTION_LOGGED_IN"] == $ITEM['user'] && $num_bids==0){
+      ?>
+      <br>
+      [<a href="<?=$SETTINGS['siteurl']?>edit_active_auction.php?id=<?=$_SESSION["CURRENT_ITEM"]?>"><?=$MSG_30_0069?></a>]
+      <?php
+        }
+      ?>
+        </div>
+        <div class="titTable3">
+        <?php if($TPL_BIDS_value) print $TPL_BIDS_value." |"; ?>
+        <a href="<?=$SETTINGS['siteurl']?>friend.php?id=<?=$_GET['id'];?>">
+        <?=$MSG_106 ?>
+        </a>
+      <?php
+      if($SETTINGS['contactseller'] == 'always' || ($SETTINGS['contactseller'] == 'logged' && isset($_SESSION['PHPAUCTION_LOGGED_IN']))) {
+          ?>
+      | <a href="<?=$SETTINGS['siteurl']?>send_email.php?">
+          <?=$MSG_922 ?>
+          </a>
+      <?php
+      }
+      if($_SESSION["PHPAUCTION_LOGGED_IN"]) { ?>
+      | <a href="<?=$SETTINGS['siteurl']?>item_watch.php?<?=$TPL_watch_var?>=<?=$TPL_id_value?>">
+          <?=$TPL_watch_string?>
+          </a> 
+      <?php
+      } else {
+          ?>
+      | <a href="<?=$SETTINGS['siteurl']?>user_login.php?">
+          <?=$MSG_5202?>
+          </a>
+      <?php
+      }
+      ?>
+    </div>
+    <br>
+    <div class="table2">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="titTable5" valign="top">
+          <table width="100%" border="0" cellpadding="5" cellspacing="0">
+            <tr>
+              <?php
+              if($pict_url) {
+              ?>
+              <td width="10%" valign="top">
+                <table bgcolor="#ffffff">
+                  <tr>
+                    <td align='center'>
+                      <img src='<?=$SETTINGS['siteurl']?>getthumb.php?w=<?=($SETTINGS['thumb_show']+50);?>&fromfile=<?=$pict_url?>' border='0' align='center'>&nbsp;<br><?=$TPL_pict_url_value ?><br><?=$TPL_gallery?>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <?php
+              }
+              ?>
+              <?php
+              if($pict_url) {
+              ?>
+              <td width="60%" valign="top">
+              <?php
+              }else{
+              ?>
+              <td width="60%" valign="top">
+              <?php
+              }
+              ?>
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" valign="top" border="0">
+                  <tr>
+                    <td>&nbsp;
+                    </td>
+                    <td align="left" valign="top">
+                      <?php print $MSG_611 ?>
+                      <font color="#ff3300"><b> <?php echo $TPL_nr ?> </b> </font> <?php print $MSG_612 ?> <br>
+                      <?php // High bidder ?>
+                      <a href="#description"><img src="<?=$SETTINGS['siteurl']?>/images/info.gif" border='0'></a>
+                      <a href="#description"> <?php print $MSG_042 ?></a> &nbsp;&nbsp;&nbsp; 
+                      <table border='0' width="100%" cellspacing="0" cellpadding="1">
+                        <!-- auction type -->
+                        <tr>
+                         <td width="50%" align="left"><?=$MSG_261 ?>: </td>
+                          <td align="left"><?php print $TPL_auction_type; ?> </td>
+                        </tr>
+                        <!-- higher bidder -->
+                        <?php
+                          if ( $high_bidder_id ) {
+                        ?>
+                        <tr>
+                          <td width='50%' style="leftpan" valign="top">
+                            <?=$MSG_117?>:
+                          </td>
+                          <td>
+                            <?=$TPL_hight_bidder_id?> <?=$TPL_bidder_rate?> <?=$TPL_bidder_rate_radio?> <br><?=$MSG_25_0200.$TPL_bidder_feedbacks?>
+                            <br><a href="<?=$SETTINGS['siteurl']?>active_auctions.php?user_id=<?php print $userid?>"><?php print $MSG_213 ?></a>
+                            <?=$TPL_bidder_trusted?>
+                          </td>
+                         </tr>
+                        <?php
+                          }
+                        ?>
+                        <!-- number of items -->
+                        <tr>
+                          <td width="50%" align="left"> <?php print $MSG_901 ?>: </td>
+                          <td align="left"><?php print $TPL_auction_quantity; ?> </td>
+                        </tr>
+                        <!-- location of item -->
+                        <tr>
+                          <td width="50%" align="left"> <?=$MSG_923 ?>: </td>
+                          <td align="left"><?=$TPL_location_name_value ?> </td>
+                        </tr>
+                        <!-- ends -->
+                        <tr>
+                          <td width="50%" align="left"> <?php print $MSG_118 ?>: </td>
+                          <td align="left"><?php print $TPL_difference_value ?> </td>
+                        </tr>
+                        <!--    ** Number of bids  -->
+                        <?php
+                        if($ITEM['bn_only']=='n'){
+                        ?>
+                        <tr>
+                          <td width="50%" align="left"><?=$MSG_119 ?>: </td>
+                          <td align="left"><?=$TPL_num_bids_value ?> 
+                          <?php if($TPL_BIDS_value) print "( ".$TPL_BIDS_value." )"; ?></td>
+                        </tr>
+                        <!--    ** Starting bid  -->
+                        <tr>
+                          <td width="50%" align="left"> <?php print $MSG_127 ?>: </td>
+                          <td align="left"><?=$TPL_currency_value1 ?> </td>
+                        </tr>
+                        <!--    ** Current bid   -->
+                        <tr>
+                          <td width="50%" align="left"> <?php print $MSG_116 ?>: </td>
+                          <td align="left"><?=$TPL_currency_value2; ?> </td>
+                        </tr>
+                        <!--    ** Minimum bid (next possible bid)  -->
+                        <tr>
+                          <td width="50%" align="left"> <?php print $MSG_124 ?>: </td>
+                          <td align="left"><?php print $TPL_currency_value4; ?> </td>
+                        </tr>
+                        <!--    ** Reserve price  -->
+                        <?php if ($reserve_price > 0) { ?>
+                        <tr>
+                          <td width="50%" align="left"> <?php print $MSG_021 ?>: </td>
+                          <td align="left"><?=$TPL_reserve_price; ?> </td>
+                        </tr>
+                        <?php
+                        }}
+                        ?>
+                        <!--    ** Buy now price  -->
+                        <?if ($atype==1) {
+                        	if ($buy_now_price > 0) {
+                            if ($SETTINGS[buy_now] == 2) {?>
+                        <tr>
+                          <td width="50%" align="left"> <b>
+                            <?=$MSG_496?>: </td>
+                          <td align="left">
+                            <?=$TPL_buy_now_price?>
+                          </td>
+                        </tr>
+                        <?php
+                             }}
+                           }
+                        ?>
+                        <!--    ** If auction is closed -->
+                        <?php
+                        if ($AuctionIsClosed) {
+                        ?>
+                        <tr>
+                          <td colspan="2" align="left"> <?php print $MSG_904 ?> </b> </td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td width="2%">&nbsp;</td>
+        <!--   #Seller#    -->
+        <td width=37% valign="top" bgcolor="#ffffff" align="left">
+          <table width="100%" cellspacing="0" cellpadding="4" border="0" bgcolor="#ffffff">
+            <tr align="left">
+              <td align="left" class="titTable1" colspan="2">
+                <b><?php print $MSG_30_0209 ?></b>
+              </td>
+            </tr>
+            <tr>
+              <td width="3%" class='table2'>&nbsp;</td>
+              <td class='table2'>
+              <table>
+                <tr>
+                  <td><?php print $TPL_vendetor_value ?> </td>
+                  <td><?php print $TPL_num_feedbacks ?></td>
+                  <td><?php print $TPL_rate_radio ?></td>
+                </tr>
+               </table>
+                <br>
+                <?=$TPL_seller_trusted?>
+              </td>
+            </tr>
+            <tr>
+              <td width="3%">&nbsp;</td>
+              <td width="97%">
+                <?php print 
+                "<li>".$MSG_5509.$TPL_tot_feedbacks.$MSG__0151;?>
+                <?php print "<li>"."<b>".$MSG_5506.$TPL_percent_positive_feedbacks."</b>"; ?>
+                <?php if($TPL_percent_negative_feedbacks) { ?>
+                  <?php print "<li>".$TPL_percent_negative_feedbacks; ?>
+                <?php } ?>
+                <?php print "<li>".$TPL_user_reg_date ?>
+              </td>
+            </tr>
+            <tr>
+              <td width="3%">&nbsp;</td>
+              <td width="97%">
+                <a href="<?=$SETTINGS['siteurl']?>active_auctions.php?user_id=<?php print $user?>"><?php print $MSG_213 ?></a>
+                <br><br>
+                <a href="<?=$SETTINGS['siteurl']?>favorite_seller.php?add=<?php print  $user?>"><?php print $MSG_1070 ?></a>
+                <br><br>
+              </td>
+            </tr>
+            <?php
+              if($SELLER_HAS_STORE) {
+            ?>
+            <tr>
+              <td width="3%">&nbsp;</td>
+              <td width="97%">
+                  <a href="<?=$SETTINGS['siteurl']?>modules/stores/store.php?id=<?=$STOREID?>"><?=$MSG_5854?></a>
+              </td>
+            </tr>
+            <?php
+            }
+            ?>
+          </table>
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" class="titTable1">
+            <tr>
+              <td valign='middle' style='border-left: 1px solid #ddddff; border-right: 1px solid #ddddff;'>
+            <tr>
+              <td>
+                <?php
+                if(!$AuctionIsClosed && $ends>$NOW) {
+                  if($ITEM['bn_only']=='n'){
+                ?>
+                <table width=100% border=0 cellpadding=2 cellspacing=0 border=1>
+                <form name='bid' action="<?=$BIDFILE?>" method='post'>
+                <tr>
+                  <td width=65%>
+                    <table width=100% border=0 cellpadding=2 cellspacing=0>
+                      <tr>
+                        <td align=left>
+                        <b>
+                        <?php print $MSG_124;
+                         print ": ".$TPL_currency_value4;
+                         print "<br>";
+                         if ($atype==2){ 
+                             print $MSG_284.": ".$TPL_qty."<br>";
+                         }
+                         print $MSG_121;
+                         ?>
+                       <br><input type=text name=bid size=15 />
+                        </td>
+                      </tr>
+                    </table>
+                   </td>
+                   <td valign='center' align='center' class='tema' width="50%">
+                     <input type="hidden" name="bid_next" value="<?php print $TPL_next_bid_value; ?>">
+                     <input type="hidden" name="seller_id" value="<?php print $TPL_user_id_value; ?>">
+                     <input type="hidden" name="title" value="<?php print $TPL_title_value; ?>" >
+                     <input type="hidden" name="category" value="<?php print $TPL_category_value; ?>" >
+                     <input type="hidden" name="id" value="<?php print $TPL_id_value; ?>">
+                     <input type=submit name="" value="<?php print $MSG_30_0208; ?>" class="button">
+                    </td>
+                  </tr>
+                </form>
+                </table>
+                <?php
+                  } else {
+                    print "<p align=center>$TPL_buy_now_price</P>";
+                  }
+                } else {
+                     print "&nbsp;";
+                }
+                ?>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <div class="tableContent2">
+      <div class="titTable4">
+        <a name="description"></a><?php print $MSG_042 ?>
+      </div>
+      <div class="table2">
+        <?php print $description ?>
+      </div>
+      <a name="image"></a>
+      <div class="table2" style="text-align:center">
+        <?php print $TPL_pict_url ?>
+      </div>
+    </div>
+    <?php
+    if($TPL_show_gallery != "") {
+    ?>
+    <!-- ================================================================================================-->
+    <!-- Pictures Gallery -->
+    <!-- ================================================================================================-->
+    <div class="tableContent2">
+        <div class="titTable4">
+            <a name="gallery"></a><?php print $MSG_663 ?>
+        </div>
+        <div class="table2" style="text-align:center">
+            <?php print $TPL_show_gallery ?>
+        </div>
+    </div>
+    <!-- ================================================================================================-->
+    <?php
+    }
+    ?>
+    <!-- ====================================================
+                        Questions & Answers 
+    ======================================================-->
+    <?php if(file_exists('./includes/viewpublicboard.inc.php')){ ?>
+    <a name="qa"></a>
+    <div class="tableContent2">
+        <div class="titTable4">
+            <a name="gallery"></a><?php print $MSG_926 ?>
+        </div>
+        <div class="tableContent2">
+        <?php include('./includes/viewpublicboard.inc.php'); ?>
+        </div>
+    </div>
+    <?php } ?>
+    <!-- ================================================-->
+    <br>
+    <div class="titTable4">
+      <?php print $MSG_724 ?>
+    </div>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>
+          <div class="tableContent2">
+            <div class="table2">
+              <b><?php print  $MSG_014 ?>:</b> <?php print $TPL_location_name_value ?> <?php print $TPL_location_zip_value ?> <br>
+              <b><?php print $MSG_025 ?>:</b> <?php print $TPL_shipping_value ?> <?php print $TPL_international_value ?> <br>
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td valign="top"><b><?php print $MSG_25_0215?></b>:</td>
+                  <td valign="top"><?php print $TPL_shipping_terms ?></td>
+                </tr>
+              </table>
+              <br>
+              <b><?php print $MSG_026 ?>:</b> <?php print $TPL_payment_value ?> <br>
+              <br>
+              <b><?php print $MSG_111 ?>:</b> <?php print $TPL_date_string1 ?> <br>
+              <b><?php print $MSG_112 ?>:</b> <?php print $TPL_date_string2 ?> <br>
+              <b><?php print $MSG_113 ?>:</b> <?php print $TPL_id_value ?> <br>
+              <br>
+              <b><?php print $MSG_041 ?>:</b> <?php print $TPL_cat_value ?>
+              <?php
+                if ($TPL_auction_variant!="") {
+              ?>
+              <br>
+              <b> <?print $MSG_25_0071;?> </b><?php print $TPL_auction_variant; ?>
+              <?php
+                }
+              ?>
+            </div>
+          </div>
+          <!-- Get location description  -->
+        </td>
+        <td width="200" valign="middle">
+          <!--  Bidding table  -->
+          <?php
+            if(!$AuctionIsClosed && $date<=$NOW) {
+          ?>
+          <div class="border">
+            <div class="tableContent">
+              <div class="titTable1">
+                <?php if($ITEM['bn_only']=='n'){
+                     print $MSG_115;
+                   } else {
+                     print $MSG_30_0067;
+                   }
+                ?>
+              </div>
+              <div class="table1">
+              <?php
+                if($ITEM['bn_only']=='n'){
+              ?>
+              <form name=bid action="<?=$BIDFILE?>" method=post>
+                <input type="hidden" name="bid_next" value="<?php print $TPL_next_bid_value; ?>" />
+                <input type="hidden" name="seller_id" value="<?php print $TPL_user_id_value; ?>" />
+                <input type="hidden" name="title" value="<?php print $TPL_title_value; ?>" />
+                <input type="hidden" name="category" value="<?php print $TPL_category_value; ?>" />
+                <input type="hidden" name="id" value="<?php print $TPL_id_value; ?>" />
+                <b> <?php print $MSG_124 ?>:<?php print $TPL_currency_value4 ?> </b> <br>
+                <br>
+                <?php if ($atype==2): ?>
+                <?php print $MSG_258 ?>:<br>
+                <input type=text name=qty size=10 />
+                <br>
+                <?php endif; ?>
+                <?php print $MSG_121 ?> <br>
+                <input type=text name=bid size=15 />
+                <input type=submit name="" value=<?php print $MSG_102; ?> class=button />
+                <?php
+                    }
+                ?>
+                <?if($buy_now_price>0){
+                ?>
+                <p align=center><?=$TPL_buy_now_price?></P>
+                <?}?>
+              </form>
+              </div>
+            </div>
+          </div>
+          <?php
+            } else {
+              print "&nbsp;";
+            }
+          ?>
+        </td>
+      </tr>
+    </table>
+    <br>
+  </div>
+  </div>
+</div>

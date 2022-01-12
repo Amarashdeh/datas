@@ -1,0 +1,86 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_25_0003;
+include phpa_include("template_user_menu_header.html");
+?>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="4">
+    <?php
+    if(is_array($AUCTIONIDS)) {
+    ?>
+    <tr>
+        <th>
+            <?=$MSG_458;?>
+        </th>
+        <th>
+            <?=$MSG_25_0004;?>
+        </th>
+        <th>
+            <?=$MSG_303;?>
+        </th>
+        <th>
+            <?=$MSG_25_0006;?>
+        </th>
+        <th>
+            <?=$MSG_284;?>
+        </th>
+    </tr>
+    <?php
+    foreach($AUCTIONIDS as $k=>$v) {
+        if(!($k%2)) $BGCOLOR = ""; else $BGCOLOR = 'class="alt-row"';
+    ?>
+    <tr <?=$BGCOLOR?>>
+        <td>
+            <b><a href=item.php?id=<?=$v?> target=_blank>
+            <?=$AUCTIONS[$k]?>
+            </a></b>
+        </td>       	
+        <td>
+            <?=$WINNERORSELLER_NICK[$k]?>
+            ,
+            <?=$WINORSELL[$k]?>
+            ( <a href="feedback.php?id=<?=$WINNERORSELLER[$k]?>&auction_id=<?=$v?>">
+            <?=$MSG_25_0003?>
+            </a> ) <br>
+        </td>
+        <td>
+            <a href=mailto:<?=$WINNERORSELLER_EMAIL[$k]?>>
+            <?=$WINNERORSELLER_EMAIL[$k]?>
+            </a> </td>
+        <td>
+            <a href=javascript:window_open('converter.php?AMOUNT=<?=$BID[$k]?>','incre',650,200,30,30)>
+            <?=print_money($BID[$k])?>
+            </a> </td>
+        <td>
+            <?php
+            if($QTY[$k] > 0) {
+                print $QTY[$k];
+            } else {
+                print "1";
+            }
+            ?>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+    <?php
+    }
+    ?>
+</table>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

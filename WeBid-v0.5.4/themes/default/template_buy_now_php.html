@@ -1,0 +1,95 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $TPL_title_value ?>
+        </div>
+        <div class="table2">
+            <form action="buy_now.php?action=buy&id=<?php print $_REQUEST['id'] ?>" method="POST">
+                <table border=0 width="100%" cellspacing="0" cellpadding="4">
+                    <tr>
+                        <td align=right width="40%"><b><?php print $MSG_017 ?> :</b> </td>
+                        <td width="60%"><?php print $TPL_title ?> </td>
+                    </tr>
+                    <!--   #Vendedor#    -->
+                    <tr>
+                        <td align=right width="50%"><b><?php print $MSG_125 ?> :</b> </td>
+                        <td><?php print $TPL_vendetor_value ?> <?php print $TPL_num_feedbacks ?> <?php print $TPL_rate_radio ?>
+                            <!-- Get current number of feedbacks  -->
+                        </td>
+                    </tr>
+                    <!--    ** Buy now price  -->
+                    <tr>
+                        <td align=right width="40%"><b><?php print $MSG_497 ?> :</b> </td>
+                        <td><?php print $TPL_buy_now_price ?> </td>
+                    </tr>
+					<?php
+						if(!empty($TPL_errmsg)){
+					?>
+                    <tr>
+                        <td colspan=2 align="center" class=errfont> <?php echo $TPL_errmsg; ?> 
+                    </tr>
+					<?}?>
+                    <tr>
+                        <td colspan=2 align="center">&nbsp;</td>
+                    </tr>
+                    <?php
+                    if ($buy_done !=1) {
+                    	if(!$_SESSION["PHPAUCTION_LOGGED_IN"]) {
+					?>
+                    <tr>
+                        <td width="40%" align=right><?php print $MSG_003; ?> </td>
+                        <td>
+                            <input type=text name="nick" size=15 maxlength=15 value="<?php print $nickH; ?>" />
+                        </td>
+                    </tr>
+                    <?php
+                    	} else {
+					?>
+                    <tr>
+                        <td align=right><?php print $MSG_003; ?> </td>
+                        <td><b><?php print $_SESSION["PHPAUCTION_LOGGED_IN_USERNAME"] ?></b>
+                            <input type=hidden name="nick" value="<?php print $_SESSION["PHPAUCTION_LOGGED_IN_USERNAME"]; ?>" />
+                    </tr>
+                    <?php
+                    	}
+					?>
+                    <tr>
+                        <td align="right"><?php print $MSG_004; ?> </td>
+                        <td>
+                            <input type=password name="password" size=15 maxlength=15 value="" />
+                        </td>
+                    </tr>
+                </table>
+                <div style="text-align:center">
+                    <input type=submit name="" value="<?=$MSG_496?>" class=button />
+                    <input type=reset name="" value="<?=$MSG_035?>" class=button />
+                </div>
+                <?php 
+                    } else {
+				?>
+                <tr>
+          <td colspan="2" align="center"> <?php echo $MSG_498; ?> </td>
+                </tr>
+                </table>
+                <?php
+                    }
+				?>
+            </form>
+        </div>
+    </div>
+</div>

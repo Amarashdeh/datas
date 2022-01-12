@@ -1,0 +1,32 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?php print $MSG_248 ?>
+        </div>
+        <div class="table2">
+            <form name=registration action="<?php print basename($_SERVER['PHP_SELF']); ?>" method="POST">
+                <div style="text-align:center">
+                    <?php print $MSG_267; ?><br>
+                    <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
+                    <input type=submit name="action" value="<?php print $MSG_249; ?>" class=button />
+                    <input type=submit name="action" value="<?php print $MSG_250; ?>" class=button />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

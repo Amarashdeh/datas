@@ -1,0 +1,24 @@
+<SELECT NAME="id">
+<OPTION VALUE="">Selecciona la categor&iacute;a</OPTION>
+<OPTION VALUE=""></OPTION>
+	<OPTION VALUE="1">Arte y Antiguedades</OPTION>
+	<OPTION VALUE="220">Autos y Vehiculos</OPTION>
+	<OPTION VALUE="221">Casas y Terrenos</OPTION>
+	<OPTION VALUE="76">Coleccionables</OPTION>
+	<OPTION VALUE="114">Comics, Cromos & Ciencia Ficcion</OPTION>
+	<OPTION VALUE="184">Deportes y Ocio</OPTION>
+	<OPTION VALUE="128">Electrnica y Fotografia</OPTION>
+	<OPTION VALUE="134">Gemas y Joyas</OPTION>
+	<OPTION VALUE="149">Hogar  y Jardin</OPTION>
+	<OPTION VALUE="188">Juguetes y Juegos</OPTION>
+	<OPTION VALUE="28">Libros</OPTION>
+	<OPTION VALUE="73">Monedas y Sellos</OPTION>
+	<OPTION VALUE="164">Musica</OPTION>
+	<OPTION VALUE="171">Oficina y Negocios</OPTION>
+	<OPTION VALUE="123">Ordenadores & Software</OPTION>
+	<OPTION VALUE="176">Otros Bienes y Servicios</OPTION>
+	<OPTION VALUE="159">Peliculas & Video</OPTION>
+	<OPTION VALUE="69">Ropa y Complementos</OPTION>
+	<OPTION VALUE=""></OPTION>
+	<OPTION VALUE="0">Todas las categor&iacute;as</OPTION>
+</SELECT>

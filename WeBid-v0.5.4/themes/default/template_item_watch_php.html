@@ -1,0 +1,78 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<?php
+$TMP_usmenutitle=$MSG_472;
+include phpa_include("template_user_menu_header.html");
+?>
+		<table width="98%" cellpadding=1 cellspacing=0 border=0>
+        	<tr>
+                <th width="9%" align="center" height="5">
+                    <?=$MSG_167; ?>
+                </th>
+                <th width="39%" height="5" align="center">
+                    <?=$MSG_168; ?>
+                </th>
+                <th width="14%" height="5" align="center">
+                    <?=$MSG_169; ?>
+                </th>
+                <th width="14%" height="5" align="center">
+                    <?=$MSG_170; ?>
+                </th>
+                <th width="14%" align="center" height="5" nowrap>
+                    <?=$MSG_171; ?>
+                </th>
+                <th width="10%" align="center" height="5">
+                    <?=$MSG_008; ?>
+                </th>
+            </tr>
+            <?php
+            foreach($TPL_auctions_list_value as $k=>$tplv) {
+                if($k % 2) {
+            ?>
+            <tr align="center" class="alt-row">
+                <?php
+                } else {
+                ?>
+            <tr align="center">
+                <?php
+                }
+                ?>
+                <td align="center">
+                    <?=$tplv['img']?>
+                </td>
+                <td align="left">
+                    <?=$tplv['idformat'].$tplv['buy_now']?>
+                </td>
+                <td align="right">
+                    <a href="javascript:window_open('converter.php?AMOUNT=<?=$bid?>','incre',650,200,30,30)"><?=print_money($tplv['bid'])?></a>                    
+                </td>
+                <td align="center">
+                    <?=$tplv['rpr']?>
+                </td>
+                <td align="center">
+                    <?=$tplv['diff']?>
+                </td>
+				<td width="10%" align="center">
+					<a href='item_watch.php?delete=<?=$tplv['id']?>'><img src="./images/trash.gif" border="0"></a>
+				</td>
+            </tr>
+            <?php
+            }
+            ?>
+		<?php echo stripslashes($TPL_item_watch); ?>
+		</table>
+<?php
+include phpa_include("template_user_menu_footer.html");
+?>

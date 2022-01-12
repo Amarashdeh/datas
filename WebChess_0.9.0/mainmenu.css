@@ -1,0 +1,56 @@
+<STYLE TYPE="text/css">
+A:visited, :link {text-decoration: underline}
+A:link {color : navy}
+A:link:hover, :visited:hover {text-decoration: none}
+A:visited {color: navy}
+A:link:active, :visited:active {color: green}
+
+/*BODY {background-color: black ; color: cyan; background-image: 
+url(./D511img.gif); background-attachment: fixed; font-family: Arial; 
+font-size: 16px}*/
+
+/*
+.topbgtext {position: relative; top: 0px; text-align: center; color: 
+#77AAAA; font-family: Impact, Arial, Helvetica; font-size: 54px}
+.topfgtext {position: relative; top: -45px; text-align: center; color: 
+#003300; font-family: Arial, Helvetica; font-size: 20px; font-weight: 
+bold}
+*/
+
+BODY {background-color: white ; color: black; font-family: Times, Times 
+New Roman, Serif}
+
+/*
+.septitle {background-color: #447777; color: white}
+.bigtitle {background-color: #447777; color: white; font-size: 20px; 
+text-align: center}
+.smallinline {font-size: smaller}
+.comic {font-family: Comic Sans MS}
+*/
+
+TABLE {border-collapse : collapse; border: 0px solid silver}
+/*TABLE {border-collapse : collapse; border: 0px dashed silver}*/
+TD {margin: 3px; padding: 0px; border: 0px silver}
+TH {margin: 3px; padding: 0px; border: 0px silver; background-color: lightgray}
+
+/*
+.linktable {border: 2px solid white; padding: 1em; border-spacing: 10px 
+30px}
+.linktabledata {padding: 10px; border: 1px dashed silver}
+*/
+
+H1 {color : navy; text-align: center}
+H2 {color : navy; text-align: center}
+H3 {font-family: Arial; font-weight: bold; text-align: left; text-indent: 
+80}
+
+HR {width: 50%}
+.fullwidth {width: 100%}
+
+.imgtitle {background-color: #800080; color: yellow}
+.shortdescription {text-size: smaller; font-family: Arial; font-style: 
+italic}
+.parenthesis {font-size: 10px}
+.goback {font-size: smaller}
+	
+</STYLE>

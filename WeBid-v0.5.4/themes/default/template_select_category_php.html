@@ -1,0 +1,95 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<div class="content">
+    <div class="tableContent2">     
+    <div class="titTable2"> <?php print $MSG_028; ?></div>
+            <form name="catform" action="<?=$_SERVER['PHP_SELF']?>#goto" method="post">
+          <input type="hidden" name="action" value="process">
+          <input type="hidden" name="box" value="">
+          <?php
+          if(is_array($DONTSUBMIT)) {
+          	while(list($k,$v) = each($DONTSUBMIT)) {
+          		print '<input type="hidden" name="S'.$k.'" value="'.$v.'">';
+          	}
+          }
+	  ?>
+          
+      <table width="80%" BORDER="0" CELLPADDING="4" class="content">
+        <tr> 
+          <td colspan="2" valign="top"> 
+            <?=$MGS_2__0038?>
+          </td>
+        </tr>
+        <?php
+            if($ERR) {
+			?>
+        <tr> 
+          <td colspan="2" class="errfont">
+            <?=$ERR?>
+          </td>
+        </tr>
+        <?php
+            }
+            ?>
+        <tr> 
+          <?php
+              for ($i=0;$i<8;$i++) {
+              	$catto="CATS".$i;
+              	$cattnext="CATS".($i+1);
+              	if(is_array($$catto)) {
+					?>
+          <td align="center" style="width:40%;">
+              <select name="cat<?=$i?>" class="box" size="8" onClick="SubmitBoxes(<?=($i+1)?>,'cat<?=$i?>')" style="width:250px;">
+                <?php
+					while(list($k,$v) = each($$catto)) {
+					?>
+                <option value="<?=$k?>" <?if($_POST['cat'.$i] == $k) print " SELECTED";?>> 
+                <?=$v?>
+                <?php
+                    if($_POST['cat'.$i] == $k && is_array($$cattnext)) $_SESSION['CATSTRING'] .= str_replace("&nbsp;->","",$v)." > ";
+					?>
+                </option>
+                <?php
+			}
+			if(count($$catto) < 8) {
+				$k = count($$catto);
+				while($k <= 8) {
+					print "<option value=''></option>";
+					$k++;
+				}
+			}
+			?>
+              </select>
+           </td>
+          <?php
+              	}
+              	if ($i % 2==1) print "</tr><tr>";
+              }
+			  ?>
+        <tr> 
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td align=center colspan="2" >
+	  <?php if($SHOWBUTTON){?>
+	  <input type="submit" name="submitit" value="<?=$MGS_2__0047?>" class="button" />
+	  <?}?>
+          </td>
+        </tr>
+      </table>
+        </form>
+      </center>
+</div>
+</div>

@@ -1,0 +1,107 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<script type="text/javascript" language="JavaScript">
+<!--
+function submitlogin ()
+{
+	document.user_login.submit ();
+}
+//-->
+</script>
+
+<div class="content">
+  <div class="tableContent2">
+	<div class="titTable2">
+  		<?=$MSG_205?>
+	</div>
+	
+  <TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+	<TD>
+        <dl class="phpa-tabs">
+            <dd>
+            	<?if ($_SESSION['cptab']!='account') {?>
+                <a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=account"><?=$MSG_25_0081?></a>
+                <?} else {?>
+                <a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=account"><?=$MSG_25_0081?></a>
+                <?}?>
+            </dd>  
+			<?php
+			if(($SETTINGS['uniqueseller']>0 && $_SESSION["PHPAUCTION_LOGGED_IN"]==$SETTINGS['uniqueseller']) || $SETTINGS['uniqueseller']==0){
+			?>
+            <dd>
+            	<?if ($_SESSION['cptab']!='selling') {?>
+                <a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=selling"><?=$MSG_25_0082?></a>
+                <?} else {?>
+                <a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=selling"><?=$MSG_25_0082?></a>
+                <?}?>
+            </dd>    
+			<?php
+				}
+			?>
+            <dd>
+            	<?if ($_SESSION['cptab']!='buying') {?>
+				<a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=buying"><?=$MSG_25_0083?></a>
+                <?} else {?>
+				<a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=buying"><?=$MSG_25_0083?></a>
+                <?}?>
+		    </dd> 
+<?php
+		if (is_file("$include_path/../modules/stores/store.php")) {
+   			if($STORESENABLED == 'y') {
+   		?>
+			<dd>
+           	<?if ($_SESSION['cptab']!='stores') {?>
+		    	<a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=stores"><?=$MSG_25_0064?></a>
+                <?} else {?>
+		    	<a href="<?=$SETTINGS['siteurl']?>user_menu.php?cptab=stores"><?=$MSG_25_0064?></a>
+                <?}?>
+			</dd>    
+    	<?php
+    		}
+		}
+?>			   
+        </dl>
+    
+    </TD>
+    </TR>
+    <TR>
+    <TD>
+	<div class="tableContent2">
+		<div class="titTable4">
+			<?php print $MSG_200."<B>".$_SESSION['PHPAUCTION_LOGGED_IN_USERNAME']."</B>"; ?> [<a href="<?=$SETTINGS['siteurl']?>logout.php"><?php print $MSG_245; ?></a>]
+			<?if ($_SESSION['cptab']=='stores' && $PHPAUCTION_HAS_STORE) {?>
+			<a name="store"></a><?=$_STORES_0061?><b><?=stripslashes($STORENAME)?></b>
+			<?}?>
+		</div>
+		<?php if(!empty($TMP_usmenutitle)) {?>
+		<div class="titTable4">
+			<?=$TMP_usmenutitle?>
+		</div>
+		<?}?>
+		<div class="table2">
+  		<?php
+  		if(!empty($ERR) || !empty($TPL_errmsg)) {
+  		?>
+  			<p class=errfont style="background-color;#FF9933;display:block" >
+    		<?php
+			print $ERR.$TPL_errmsg;
+			?>
+  			</p>
+  		<?}?>
+		</div>
+	</TD>
+	</TR>
+	</TABLE>

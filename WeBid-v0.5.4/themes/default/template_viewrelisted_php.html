@@ -1,0 +1,188 @@
+<?php
+
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" >
+  <TR>
+    <TD><p>
+      <FORM NAME="open" METHOD="post" ACTION="<?=basename($_SERVER[PHP_SELF])?>">
+        <TABLE WIDTH="90%" BORDER="0" CELLSPACING="0" CELLPADDING="4" ALIGN="CENTER">
+          <TR >
+            <TD CLASS=white COLSPAN="8"><div align="center">
+                <A HREF=yourauctions_c.php>
+                <?=$MSG_234?>
+                </A> </div></TD>
+          </TR>
+          <TR>
+            <TD CLASS=white COLSPAN="8" BGCOLOR="#EEEEEE"><CENTER>
+                <B>
+                <?=$MSG__0168?>
+                </B>
+              </CENTER></TD>
+          </TR>
+          <TR BGCOLOR="<?=$SETTINGS[bordercolor]?>">
+            <TD CLASS=white WIDTH="41%"><B>
+              <?=$nav_font;?>
+              <?=$MSG_624?>
+              </B></TD>
+            <TD CLASS=white WIDTH="14%"><B>
+              <?=$nav_font;?>
+              <?=$MSG_625?>
+              </B></TD>
+            <TD CLASS=white WIDTH="14%"><B>
+              <?=$nav_font;?>
+              <?=$MSG_626?>
+              </B></TD>
+            <TD CLASS=white WIDTH="12%" ALIGN=center><b>
+              <?=$nav_font;?>
+              <?=$MSG__0153?>
+              </b></TD>
+            <TD CLASS=white WIDTH="10%" ALIGN=center><B>
+              <?=$nav_font;?>
+              <?=$MSG_627?>
+              </B></TD>
+            <TD WIDTH="13%" ALIGN=center><B>
+              <?=$nav_font;?>
+              <?=$MSG_628?>
+              </B></TD>
+            <TD WIDTH="6%" ALIGN=center><B>
+              <?=$nav_font;?>
+              <?=$MSG_298?>
+              </B></TD>
+            <TD WIDTH="6%" ALIGN=center><B>
+              <?=$nav_font;?>
+              <?=$MSG_008?>
+              </B></TD>
+          </TR>
+        <?php
+			if(is_array($IDS)) {
+				while(list($k,$v) = each($IDS)) {
+		?>
+          <TR BGCOLOR="#EEEEEE">
+            <TD CLASS=white WIDTH="41%"><FONT COLOR="#000000"><A HREF="item.php?id=<?=$NEWAUCTIONS[$k]?>" TARGET=_blank>
+              <?=$TITLE[$k]?>
+              </A> </FONT></TD>
+            <TD CLASS=white WIDTH="14%"><FONT COLOR="#000000">
+              <?=FormatDate($STARTS[$k])?>
+              </FONT></TD>
+            <TD CLASS=white WIDTH="14%"><FONT COLOR="#000000">
+              <?=FormatDate($ENDS[$k])?>
+              </FONT></TD>
+            <TD CLASS=white WIDTH="12%"  ALIGN=CENTER><font color="#000000">
+		<?php
+		if($RELIST[$k] == 0) {
+			print "--";
+		} else {
+			print $RELIST[$k]." / ".$RELISTED[$k];
+		}
+		?>
+              </font></TD>
+            <TD CLASS=white WIDTH="10%"  ALIGN=CENTER><FONT COLOR="#000000">
+              <?=$BIDS[$k]?>
+              </FONT></TD>
+            <TD CLASS=white WIDTH="13%"  ALIGN=CENTER><FONT COLOR="#000000">
+            <?php
+			if($BID[$k] == 0) {
+				print "-";
+			} else {
+				print print_money($BID[$k]);
+			}
+			?>
+              </FONT></TD>
+            <TD CLASS=white WIDTH="6%"  ALIGN=CENTER>
+			<?php
+			if($BID[$k] == 0) {
+			?>
+              <A HREF="edit_active_auction.php?id=<?=$NEWAUCTIONS[$k]?>"><IMG SRC="images/edititem.gif" WIDTH="13" HEIGHT="17" ALT="<?=$MSG_512?>" BORDER="0"></A>
+            <?php
+			} else {
+				print "&nbsp;";
+			}
+			?>
+            </TD>
+            <TD CLASS=white WIDTH="6%"  ALIGN=CENTER>
+			<?php 
+			if($BID[$k] == 0) {
+			?>
+              <INPUT TYPE="checkbox" NAME="O_delete[]" VALUE="<?=$IDS[$k]?>">
+            <?php
+			} else {
+				print "&nbsp;";
+			}
+			?>
+            </TD>
+          </TR>
+          <?php
+		}
+	}
+		  ?>
+          <TR>
+            <TD CLASS=white COLSPAN="8"><CENTER>
+                <P>
+                  <INPUT TYPE="hidden" NAME="action" VALUE="delopenauctions" />
+                  <INPUT TYPE="submit" NAME="Submit" VALUE="<?=$MSG_631?>"  class=button />
+                </P>
+              </CENTER></TD>
+          </TR>
+        </TABLE>
+      </FORM>
+      <P>&nbsp;</P>
+      <CENTER>
+        <FONT FACE="Verdana,Helvetica" SIZE=2>
+        <?=$MSG_5117?>
+&nbsp;&nbsp;
+        <?=$PAGE?>
+        <?=$MSG_5118?>
+&nbsp;&nbsp;
+        <?=$PAGES?>
+        <BR>
+        <?php
+		$PREV = intval($PAGE - 1);
+		$NEXT = intval($PAGE  + 1);
+		if($PAGES > 1) {
+			if($PAGE > 1) {
+		?>
+        <A HREF="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$PREV?>"><U>
+        <?=$MSG_5119?>
+        </U></a> &nbsp;&nbsp;
+        <?php
+			}
+			$LOW = $PAGE - 5;
+			if($LOW <= 0) $LOW = 1;
+			$COUNTER = $LOW;
+			while($COUNTER <= $PAGES && $COUNTER < ($PAGE+6)) {
+				if($PAGE == $COUNTER) {
+					print "<B>$COUNTER</B>&nbsp;&nbsp;";
+				} else {
+					print "<A HREF=\"".basename($_SERVER[PHP_SELF])."?PAGE=$COUNTER\"><U>$COUNTER</U></A>&nbsp;&nbsp;";
+				}
+				$COUNTER++;
+			}
+		?>
+&nbsp;&nbsp;
+        <?php
+			if($PAGE < $PAGES) {
+		?>
+        <A HREF="<?=basename($_SERVER[PHP_SELF])?>?PAGE=<?=$NEXT?>"><U>
+        <?=$MSG_5120?>
+        </U></A> </FONT>
+        <?php
+			}
+		}
+		?>
+      </CENTER>
+      <p>
+    </TD>
+  </TR>
+</TABLE>

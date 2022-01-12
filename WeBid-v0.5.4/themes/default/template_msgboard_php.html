@@ -1,0 +1,144 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<TABLE WIDTH="100%" bgcolor="<?=$BGCOLOR?>" BORDER=0 CELLPADDING="0" CELLSPACING="0">
+  <TR align="center">
+    <TD colspan="2">
+        <div class="titTable3">
+                <a href="boards.php"><?=$MSG_5058?></a>
+        </div>
+        <br>
+        <TABLE WIDTH="70%" BORDER="0" CELLSPACING="0" CELLPADDING="6" ALIGN="center">
+        <TR>
+          <TD WIDTH="79%" VALIGN="top" class=titTable4><?=$MSG_30_0181.":&nbsp;".$BOARD_TITLE?></TD>
+        </TR>
+        </TABLE>
+        <TABLE WIDTH="70%" BORDER="0" CELLSPACING="0" CELLPADDING="6" ALIGN="center" BGCOLOR="#EEEEEE">
+        <TR>
+            <TD align=center>
+            <form name=messageboard action=<?=basename($_SERVER[PHP_SELF])?> method=POST>
+                <input type=hidden name=action value="insertmessage" />
+                <input type=hidden name=board_id value="<?=$_REQUEST['board_id']?>" />
+                <?php
+                if(!isset($_SESSION['PHPAUCTION_LOGGED_IN'])){
+                ?>
+                <?="<p class=errfont>$MSG_5056</p>"?>
+                <br>
+                <?php
+                }
+                ?>
+                <textarea name="newmessage" cols="60" rows="5"></textarea>
+                <br>
+                <input type="submit" name="Submit" value="<?=$MSG_5057?>" class=button />
+            </form>
+            </TD>
+        </TR>
+        </TABLE>
+        <br>
+        <br>
+        <TABLE WIDTH="70%" BORDER="0" CELLSPACING="0" CELLPADDING="2" ALIGN="center" BGCOLOR="#EEEEEE">
+            <TR>
+                <TD WIDTH="79%" colspan=2 VALIGN="top" class=titTable4>
+                    <?=$MSG_5059?>
+                    </TD>
+            </TR>
+        </TABLE>
+<?php
+        if(mysql_num_rows($res_msgs) > 0) {
+          ?>
+            <table width="70%" border="0" cellspacing="0" cellpadding="4" align=center>
+                <!-- ## display messages ## -->
+                <?php
+                while($MSG = mysql_fetch_array($res_msgs)) {
+                  ?>
+                <tr>
+                    <td align=left valign="top">
+                        <?=nl2br(stripslashes($MSG[message]))?>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" align=left bgcolor=#eeeeee>
+                        <?php
+                        if($MSG[username]) {
+                        ?>
+                        <?="$MSG_5060 <b>".$MSG[username]."</b> - ".FormatDate($MSG[msgdate])?>
+                        <?php
+                        } else {
+                        ?>
+                        <?="$MSG_5060 <b>$MSG_5061</b> -".FormatDate($MSG[msgdate])?>
+                        <?php
+                        }
+                          ?>
+                    </td>
+                </tr>
+                <?php
+                }
+                ?>
+            </table>
+        <?php        
+        }
+        ?>
+        <div class="table2">
+            <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                <tr align="center" >
+                    <td valign="top">
+                        <?=$MSG_5117?>
+&nbsp;&nbsp;
+                        <?=$PAGE?>
+                        <?=$MSG_5118?>
+&nbsp;&nbsp;
+                        <?=$PAGES?>
+                        <br>
+                        <?php
+                        $PREV = intval($PAGE - 1);
+                        $NEXT = intval($PAGE  + 1);
+                        ?>
+                        <?php
+                        if($PAGES > 1) {
+                            if($PAGE > 1) {
+                        ?>
+                        <a href="<?=basename($_SERVER[PHP_SELF])?>?board_id=<?=$_REQUEST['board_id']?>&PAGE=<?=$PREV?>"><u><?=$MSG_5119?></u></a> &nbsp;&nbsp;
+                        <?php
+                            }
+                        ?>
+                        <?php
+                        $LOW = $PAGE - 5;
+                        if($LOW <= 0) $LOW = 1;
+                        $COUNTER = $LOW;
+                        while($COUNTER <= $PAGES && $COUNTER < ($PAGE+6)) {
+                            if($PAGE == $COUNTER) {
+                                print "<b>$COUNTER</b>&nbsp;&nbsp;";
+                            } else {
+                                print "<a href=\"".basename($_SERVER[PHP_SELF])."?board_id=".$_REQUEST['board_id']."&PAGE=$COUNTER\"><u>$COUNTER</u></a>&nbsp;&nbsp;";
+                            }
+                            $COUNTER++;
+                        }
+                        ?>
+                        &nbsp;&nbsp;
+                        <?php
+                        if($PAGE < $PAGES) {
+                        ?>
+                        <a href="<?=basename($_SERVER[PHP_SELF])?>?board_id=<?=$_REQUEST['board_id']?>&PAGE=<?=$NEXT?>"><u><?=$MSG_5120?></u></a>
+                        <?php
+                        }
+                        }
+
+                        ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
+</td>
+</tr>
+</table>

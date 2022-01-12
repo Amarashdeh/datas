@@ -1,0 +1,60 @@
+<?php#
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+?>
+<br>
+	<div class="footer">
+        <a href="<?=$SETTINGS['siteurl']?>index.php?"><?php print $MSG_166; ?></a>
+		<?php
+		if(($SETTINGS['uniqueseller']>0 && $_SESSION["PHPAUCTION_LOGGED_IN"]==$SETTINGS['uniqueseller']) || $SETTINGS['uniqueseller']==0){
+		?>
+        | <a href="<?=$SETTINGS['siteurl']?>select_category.php?"><?php print $MSG_028; ?></a>
+        <?php
+		}
+			if($HTTP_SESSION_VARS["PHPAUCTION_LOGGED_IN"]) {
+				/* user is logged in, give link to edit data or log out */
+		?>
+        | <a href="<?=$SETTINGS['siteurl']?>user_menu.php?"><?php print $MSG_622; ?></a> 
+        | <a href="<?=$SETTINGS['siteurl']?>logout.php?"><?php print $MSG_245; ?></a> 
+        <?php
+			} else {
+				/* user not logged in, give link to register or login */
+		?>
+        | <a href="<?=$SETTINGS['siteurl']?>register.php?"><?php print $MSG_235; ?></a> 
+        | <a href="<?=$SETTINGS['siteurl']?>user_login.php?"><?php print $MSG_052; ?></a> 
+        <?php
+			}
+		?>
+        | <a href="javascript: window_open('<?=$SETTINGS['siteurl']?>faqs.php','faqs',500,400,20,20)"><?php print $MSG_148; ?></a>	
+        <?php
+			if($SETTINGS['aboutus'] == 'y') {
+		?>
+        | <a href="<?=$SETTINGS['siteurl']?>contents.php?show=aboutus"><?php print $MSG_5085; ?></a> 
+        <?php
+			}
+		?>
+        <?php
+			if($SETTINGS['terms'] == 'y') {
+		?>
+        | <a href="<?=$SETTINGS['siteurl']?>contents.php?show=terms"><?php print $MSG_5086; ?></a> 
+        <?php
+			}
+		?>
+		<br>
+      <?php print $MSG_260; ?>
+	</div>
+	</td>
+	</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="auctionmail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="auction_watchmail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536486740000000" remote="128584263000000000" />
+<file name="buyer_request.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="categories_select_box.inc.php" server="ftp.we-link.co.uk/public_html/" local="128209788000000000" remote="128584263000000000" />
+<file name="comment_confirmation.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536486740000000" remote="128584263000000000" />
+<file name="endauctionmail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536486740000000" remote="128584263000000000" />
+<file name="friendmail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128199420000000000" remote="128584263000000000" />
+<file name="invitationmail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_endauction_buyers_nofee.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_endauction_cumulative.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_endauction_nowinner.inc.php" server="ftp.we-link.co.uk/public_html/" local="128139804000000000" remote="128584263000000000" />
+<file name="mail_endauction_winner.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_endauction_winner_nofee.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_endauction_winner_pay.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_endauction_youwin.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_endauction_youwin_nodutch.inc.php" server="ftp.we-link.co.uk/public_html/" local="128458365600000000" remote="128584263000000000" />
+<file name="mail_endauction_youwin_pay.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="mail_item_watch.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536489280000000" remote="128584263000000000" />
+<file name="mail_request_to_seller.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536486740000000" remote="128584263000000000" />
+<file name="messages.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536770620000000" remote="128584263000000000" />
+<file name="newpasswd.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536492340000000" remote="128584263000000000" />
+<file name="no_longer_winnermail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="privateboard_messages.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="send_email.inc.php" server="ftp.we-link.co.uk/public_html/" local="128536490300000000" remote="128584263000000000" />
+<file name="setup_confirmation_pay_mail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_approved.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_needapproval.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_pay.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_pay_invoice.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_prepay.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_rejected.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_toseller_approved.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+<file name="usermail_toseller_rejected.inc.php" server="ftp.we-link.co.uk/public_html/" local="128132892000000000" remote="128584263000000000" />
+</dwsync>

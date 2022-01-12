@@ -1,0 +1,123 @@
+<?php
+/***************************************************************************
+ *   copyright				: (C) 2008 WeBid
+ *   site					: http://sourceforge.net/projects/simpleauction
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. Although none of the code may be
+ *   sold. If you have been sold this script, get a refund.
+ ***************************************************************************/
+
+?>
+
+<div class="content">
+    <div class="tableContent2">
+        <div class="titTable2">
+            <?=$MSG_152?>
+        </div>
+			<div class="titTable3">
+			<a href="item.php?"><?php print $MSG_138; ?></a> | 
+			<?php
+			if(isset($ARETHEREBIDS)&&!empty($ARETHEREBIDS)) {
+			?>
+				<?=$ARETHEREBIDS?>
+			<?php
+			}
+			?>
+			</div>
+        <div class="table2">
+            <?php
+            if(!empty($TPL_errmsg)) {
+			?>
+            <div class=errfont>
+                <?=$TPL_errmsg?>
+            </div>
+            <?php
+            }
+			?>
+            <?php
+            if(!$_SESSION["PHPAUCTION_LOGGED_IN"]) {
+            ?>
+            <div class="titTable4">
+                <?php print $MSG_153?>
+            </div>
+            <?php
+            }
+			?>
+            <?php
+            if(!empty($TPL_new_proxy2)|| !empty($TPL_new_proxy3)) {
+            ?>
+            <div class=errfont>
+                <?php print $TPL_new_proxy2.$TPL_new_proxy3; ?>
+            </div>
+            <?php
+            }
+			?>
+            <form name="bid" action="<?=basename($PHP_SELF)?>" method="POST">
+                <table width="100%" border=0 cellpadding="4">
+                    <tr>
+                        <td><b>
+                            <?=$MSG_154?>
+                            </b> &nbsp;<?php echo stripslashes($TPL_title); ?> <br>
+                            <?php echo $currency; ?></td>
+                    </tr>
+                    <tr>
+                        <td> <b><?php print $MSG_156; ?></b> &nbsp;
+                            <input type=TEXT size=5 name="bid" value="<?php print $bidH; ?>" />
+                            ( <?php print $MSG_283; ?> : <?php print $TPL_next_bid; ?> ) </td>
+                    </tr>
+                    <?php if ($atype==2) {?>
+                    <tr>
+                        <td><?php print $MSG_284; ?> :
+                            <input type=TEXT size=3 name="qty" value="<?php print $qtyH; ?>" />
+                        </td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+                <table width="100%" border="0" cellpadding="4" cellspacing="0">
+                    <tr>
+                        <td width="30%" align="right" valign="bottom"><b><?php print $MSG_003; ?></b></td>
+                        <td width="70%" valign="top">
+                            <?php
+                            if(!$_SESSION["PHPAUCTION_LOGGED_IN"])
+                            {
+							?>
+                            <a target="_blank" href="register.php?"> <?php print $MSG_163; ?> </a> <br>
+                            <input type="text" name="nick" size="20" value="<?php echo $nickH; ?>" />
+                        </td>
+                    </tr>
+                    		<?php
+                            } else {
+							?>
+&nbsp;<b>
+                    <?=$_SESSION["PHPAUCTION_LOGGED_IN_USERNAME"] ?>
+                    </b>
+                    <input type="hidden" name="nick" size="20" value="<?php echo $_SESSION["PHPAUCTION_LOGGED_IN_USERNAME"]; ?>" />
+                    <?php
+                            }
+					?>
+                    <br>
+                    <tr>
+                        <td align="right"><b><?php print $MSG_004; ?></b></td>
+                        <td>
+                            <input type="password" name="password" size="20"  value="" />
+                        </td>
+                    </tr>
+                </table>
+                <div style="text-align:center">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                    <br>
+                    <input type="hidden" name="action" value="bid" />
+                    <input type=submit name="Input" value="<?=$MSG_5199?>" class=button />
+                    <input type=reset name="Input" value="<?=$MSG_035?>" class=button />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
